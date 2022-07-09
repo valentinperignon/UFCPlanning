@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		A745A29D2879F19200BE6C89 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = A745A29C2879F19200BE6C89 /* Realm */; };
 		A745A29F2879F19200BE6C89 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A745A29E2879F19200BE6C89 /* RealmSwift */; };
+		A745A2A62879F30F00BE6C89 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745A2A52879F30F00BE6C89 /* Entity.swift */; };
+		A745A2A82879F47500BE6C89 /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745A2A72879F47500BE6C89 /* Timetable.swift */; };
+		A745A2AA2879F4C300BE6C89 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745A2A92879F4C300BE6C89 /* Day.swift */; };
+		A745A2AC2879F4F300BE6C89 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A745A2AB2879F4F300BE6C89 /* Subject.swift */; };
 		A793483E2879E6C100D3D9E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A793483D2879E6C100D3D9E4 /* AppDelegate.swift */; };
 		A79348402879E6C100D3D9E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A793483F2879E6C100D3D9E4 /* SceneDelegate.swift */; };
 		A79348422879E6C100D3D9E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79348412879E6C100D3D9E4 /* ViewController.swift */; };
@@ -18,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A745A2A52879F30F00BE6C89 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		A745A2A72879F47500BE6C89 /* Timetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timetable.swift; sourceTree = "<group>"; };
+		A745A2A92879F4C300BE6C89 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		A745A2AB2879F4F300BE6C89 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
 		A793483A2879E6C100D3D9E4 /* UFCPlanning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UFCPlanning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A793483D2879E6C100D3D9E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A793483F2879E6C100D3D9E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +49,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A745A2A02879F1D200BE6C89 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A745A2A52879F30F00BE6C89 /* Entity.swift */,
+				A745A2A72879F47500BE6C89 /* Timetable.swift */,
+				A745A2A92879F4C300BE6C89 /* Day.swift */,
+				A745A2AB2879F4F300BE6C89 /* Subject.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A79348312879E6C100D3D9E4 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +118,7 @@
 		A79348542879E7CA00D3D9E4 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A745A2A02879F1D200BE6C89 /* Model */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -181,6 +201,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A745A2A62879F30F00BE6C89 /* Entity.swift in Sources */,
+				A745A2A82879F47500BE6C89 /* Timetable.swift in Sources */,
+				A745A2AC2879F4F300BE6C89 /* Subject.swift in Sources */,
+				A745A2AA2879F4C300BE6C89 /* Day.swift in Sources */,
 				A79348422879E6C100D3D9E4 /* ViewController.swift in Sources */,
 				A793483E2879E6C100D3D9E4 /* AppDelegate.swift in Sources */,
 				A79348402879E6C100D3D9E4 /* SceneDelegate.swift in Sources */,
