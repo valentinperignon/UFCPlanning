@@ -10,5 +10,5 @@ import RealmSwift
 class Entity: Object {
     @Persisted var level: Int
     @Persisted var name: String
-    @Persisted var parent: String
+    @Persisted var parent: String?
 }
