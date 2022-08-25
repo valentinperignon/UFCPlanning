@@ -2,7 +2,7 @@
 //  Endpoint.swift
 //  
 //
-//  Created by Valentin Perignon on 23/08/2022.
+//  Created by Valentin Perignon on 25/08/2022.
 //
 
 import Foundation
@@ -53,3 +53,4 @@ extension Endpoint {
         ])
     }
 }
+
