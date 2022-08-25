@@ -5,9 +5,10 @@
 //  Created by Valentin Perignon on 20/08/2022.
 //
 
+import UFCPlanningCore
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

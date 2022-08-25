@@ -48,6 +48,7 @@ extension Endpoint {
             URLQueryItem(name: "mode", value: "\(mode)"),
             URLQueryItem(name: "color", value: withColor ? "1" : "0"),
             URLQueryItem(name: "sports", value: withSports ? "O" : "N"),
+            URLQueryItem(name: "extra", value: withExtra ? "O" : "N"),
             URLQueryItem(name: "idetu", value: "\(studentId)"),
             URLQueryItem(name: "connexion", value: token)
         ])
