@@ -8,7 +8,6 @@
 import Foundation
 
 public struct PlanningSettings {
-    let id: Int
     let numberOfDays: Int
     let mode: PlanningMode
     let withColors: Bool

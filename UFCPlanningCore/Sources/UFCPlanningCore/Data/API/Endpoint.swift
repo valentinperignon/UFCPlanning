@@ -41,16 +41,16 @@ extension Endpoint {
         .base.append(path: "/wmselect.jsp", queryItems: [URLQueryItem(name: "id", value: "\(id)")])
     }
     
-    static func planning(for id: Int, numberOdDays: Int, mode: PlanningMode, withColor: Bool, withSports: Bool, withExtra: Bool, studentId: Int, token: String) -> Endpoint {
+    static func planning(for trainingId: Int, with settings: PlanningSettings) -> Endpoint {
         .base.append(path: "/wmplanif.jsp", queryItems: [
-            URLQueryItem(name: "id", value: "\(id)"),
-            URLQueryItem(name: "jours", value: "\(numberOdDays)"),
-            URLQueryItem(name: "mode", value: "\(mode.rawValue)"),
-            URLQueryItem(name: "color", value: withColor ? "1" : "0"),
-            URLQueryItem(name: "sports", value: withSports ? "O" : "N"),
-            URLQueryItem(name: "extra", value: withExtra ? "O" : "N"),
-            URLQueryItem(name: "idetu", value: "\(studentId)"),
-            URLQueryItem(name: "connexion", value: token)
+            URLQueryItem(name: "id", value: "\(trainingId)"),
+            URLQueryItem(name: "jours", value: "\(settings.numberOfDays)"),
+            URLQueryItem(name: "mode", value: "\(settings.mode.rawValue)"),
+            URLQueryItem(name: "color", value: settings.withColors ? "1" : "0"),
+            URLQueryItem(name: "sports", value: settings.withSports ? "O" : "N"),
+            URLQueryItem(name: "extra", value: settings.withExtra ? "O" : "N"),
+            URLQueryItem(name: "idetu", value: "\(settings.studentId)"),
+            URLQueryItem(name: "connexion", value: settings.token)
         ])
     }
 }
