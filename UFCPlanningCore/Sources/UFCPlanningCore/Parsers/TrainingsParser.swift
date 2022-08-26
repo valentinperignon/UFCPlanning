@@ -7,15 +7,15 @@
 
 import Foundation
 
-public class SubjectsParser: Parser {
+public class TrainingsParser: Parser {
     private let input: String
     
     init(input: String) {
         self.input = input
     }
     
-    public func parse() -> [Subject] {
-        // TODO: Parse Subjects
-        return [Subject(name: "", date: .now, about: "", color: .clear)]
+    public func parse() -> [Training] {
+        // TODO: Parse Trainings
+        return [Training(id: 0, name: "", isShown: true)]
     }
 }
