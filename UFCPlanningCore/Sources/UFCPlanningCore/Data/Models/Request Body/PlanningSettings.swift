@@ -10,7 +10,7 @@ import Foundation
 public struct PlanningSettings {
     let id: Int
     let numberOfDays: Int
-    let mode: Int
+    let mode: PlanningMode
     let withColors: Bool
     let withSports: Bool
     let withExtra: Bool

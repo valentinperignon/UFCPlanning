@@ -41,11 +41,11 @@ extension Endpoint {
         .base.append(path: "/wmselect.jsp", queryItems: [URLQueryItem(name: "id", value: "\(id)")])
     }
     
-    static func planning(for id: Int, numberOdDays: Int, mode: Int, withColor: Bool, withSports: Bool, withExtra: Bool, studentId: Int, token: String) -> Endpoint {
+    static func planning(for id: Int, numberOdDays: Int, mode: PlanningMode, withColor: Bool, withSports: Bool, withExtra: Bool, studentId: Int, token: String) -> Endpoint {
         .base.append(path: "/wmplanif.jsp", queryItems: [
             URLQueryItem(name: "id", value: "\(id)"),
             URLQueryItem(name: "jours", value: "\(numberOdDays)"),
-            URLQueryItem(name: "mode", value: "\(mode)"),
+            URLQueryItem(name: "mode", value: "\(mode.rawValue)"),
             URLQueryItem(name: "color", value: withColor ? "1" : "0"),
             URLQueryItem(name: "sports", value: withSports ? "O" : "N"),
             URLQueryItem(name: "extra", value: withExtra ? "O" : "N"),
