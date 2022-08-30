@@ -7,14 +7,20 @@
 
 import Foundation
 
+enum TrainingType: Int {
+    case category = 1
+    case ancestorLink = 2
+    case final = 3
+}
+
 public class Training {
     let id: Int
     let name: String
-    let isShown: Bool
+    let type: TrainingType
     
-    init(id: Int, name: String, isShown: Bool) {
+    init(id: Int, name: String, type: TrainingType) {
         self.id = id
         self.name = name
-        self.isShown = isShown
+        self.type = type
     }
 }

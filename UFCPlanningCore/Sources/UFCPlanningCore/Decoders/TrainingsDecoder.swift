@@ -8,8 +8,24 @@
 import Foundation
 
 public class TrainingsDecoder: Decoder {
+    private let breakCharacter: Character = ";"
+    private let ancestorSign = ".."
+    
     public func decode(from data: String) -> [Training] {
-        // TODO: Parse Trainings
-        return [Training(id: 0, name: "", isShown: true)]
+        let list = data.split(whereSeparator: \.isNewline)
+        return list.compactMap(transform)
+    }
+    
+    private func transform(sequence: String.SubSequence) -> Training? {
+        let items = sequence.split(separator: breakCharacter)
+        
+        guard items.count >= 3,
+              let id = Int(items[1]),
+              let typeRawValue = Int(items[0]),
+              let type = TrainingType(rawValue: typeRawValue)
+        else { return nil }
+        
+        let name = String(items[2])
+        return Training(id: id, name: name, type: name == ancestorSign ? .ancestorLink : type)
     }
 }
