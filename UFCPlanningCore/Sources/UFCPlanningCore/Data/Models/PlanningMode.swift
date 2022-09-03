@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PlanningMode: Int {
+public enum PlanningMode: Int {
     case inline = 1
     case separatedByDate = 2
 }

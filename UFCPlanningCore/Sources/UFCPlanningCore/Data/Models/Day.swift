@@ -11,7 +11,7 @@ public class Day {
     let date: Date
     let subjects: [Subject]
     
-    init(date: Date, subjects: [Subject]) {
+    public init(date: Date, subjects: [Subject]) {
         self.date = date
         self.subjects = subjects
     }

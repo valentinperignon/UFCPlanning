@@ -10,13 +10,13 @@ import UIKit
 
 public class Subject {
     let name: String
-    let date: Date
+    let interval: DateInterval
     let about: String
     let color: UIColor
     
-    init(name: String, date: Date, about: String, color: UIColor) {
+    public init(name: String, interval: DateInterval, about: String, color: UIColor) {
         self.name = name
-        self.date = date
+        self.interval = interval
         self.about = about
         self.color = color
     }
