@@ -28,13 +28,13 @@ public class ApiFetcher {
         return trainingsDecoder.decode(from: dataString)
     }
     
-    public func planning(for training: Training, with settings: PlanningSettings) async throws -> Planning {
-        let (data, _) = try await urlSession.data(endpoint: .planning(for: training.id, with: settings))
+    public func planning(for training: Training, with settings: PlanningSettings, user: User) async throws -> Planning {
+        let (data, _) = try await urlSession.data(endpoint: .planning(for: training.id, with: settings, for: user))
         
         guard let dataString = String(data: data, encoding: .isoLatin1) else {
             throw ApiError.cannotDecodeData
         }
         let days = planingDecoder.decode(from: dataString)
-        return Planning(training: training, days: days)
+        return Planning(trainingId: training.id, days: days)
     }
 }

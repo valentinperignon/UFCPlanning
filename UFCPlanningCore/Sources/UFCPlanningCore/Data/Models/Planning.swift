@@ -8,11 +8,11 @@
 import Foundation
 
 public class Planning {
-    public let training: Training!
+    public let trainingId: Int
     public let days: [Day]
     
-    public init(training: Training? = nil, days: [Day]) {
-        self.training = training
+    public init(trainingId: Int, days: [Day]) {
+        self.trainingId = trainingId
         self.days = days
     }
 }

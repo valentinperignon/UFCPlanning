@@ -13,22 +13,12 @@ public struct PlanningSettings {
     public let withColors: Bool
     public let withSports: Bool
     public let withExtra: Bool
-    public let studentId: Int
-    public let token: String
     
-    public init(numberOfDays: Int,
-                mode: PlanningMode,
-                withColors: Bool,
-                withSports: Bool,
-                withExtra: Bool,
-                studentId: Int,
-                token: String) {
+    public init(numberOfDays: Int, mode: PlanningMode, withColors: Bool, withSports: Bool, withExtra: Bool) {
         self.numberOfDays = numberOfDays
         self.mode = mode
         self.withColors = withColors
         self.withSports = withSports
         self.withExtra = withExtra
-        self.studentId = studentId
-        self.token = token
     }
 }

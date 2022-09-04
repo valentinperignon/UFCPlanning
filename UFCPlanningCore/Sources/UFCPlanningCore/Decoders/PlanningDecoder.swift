@@ -9,8 +9,6 @@ import Foundation
 import UIKit
 
 public class PlanningDecoder: Decoder {
-    private let breakCharacter: Character = ";"
-    
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "fr_FR")
@@ -24,52 +22,63 @@ public class PlanningDecoder: Decoder {
         
         var parsedDays = [Day]()
         for day in days {
-            var items = day.split(whereSeparator: \.isNewline)
-            guard let currentDate = formatDate(from: String(items.removeFirst())) else { break }
+            var items = day.components(separatedBy: "\n")
+            guard let currentDate = formatDate(from: items.removeFirst()) else { break }
             
             var subjects = [Subject]()
             for item in items {
                 let elements = item.components(separatedBy: ";")
-                guard elements.count >= 3, let decimalColor = Int(elements[0]) else { break }
+                guard elements.count >= 3,
+                      let decimalColor = Int(elements[0]),
+                      let (interval, name) = getHoursAndName(from: elements[1], for: currentDate)
+                else { break }
+                
                 let color = UIColor(decimal: decimalColor)
-                let (interval, title) = formatHoursAndTitle(from: elements[1], for: currentDate)
                 let room = elements[2]
                 
-                let subject = Subject(name: title, interval: interval, about: room, color: color)
-                subjects.append(subject)
+                subjects.append(Subject(name: name, interval: interval, about: room, color: color))
             }
             
             parsedDays.append(Day(date: currentDate, subjects: subjects))
         }
-        
         return parsedDays
     }
     
-    private func formatDate(from stringDate: String) -> Date? {
-        if stringDate == "Aujourd'hui" {
-            return Calendar.current.startOfDay(for: .now)
-        }
-        if stringDate == "Demain" {
-            return .now
-        }
-        return dateFormatter.date(from: stringDate)
-    }
-    
-    private func formatHoursAndTitle(from info: String, for day: Date) -> (DateInterval, String) {
+    private func getHoursAndName(from info: String, for day: Date) -> (DateInterval, String)? {
         let elements = info.components(separatedBy: " : ")
         
         let hours = elements[0].components(separatedBy: "-")
-        var interval = [Date]()
-        for hour in hours {
-            let timeComponents = hour.split(separator: "h")
-            guard timeComponents.count >= 1,
-                  let hour = Int(timeComponents[0]),
-                  let minutes = timeComponents.count == 2 ? Int(timeComponents[1]) : 0,
-                  let date = Calendar.current.date(bySettingHour: hour, minute: minutes, second: 0, of: day)
-            else { break }
-            interval.append(date)
-        }
+        guard hours.count >= 2,
+              let start = formatHour(from: hours[0], for: day),
+              let end = formatHour(from: hours[1], for: day)
+        else { return nil }
         
-        return (DateInterval(start: interval[0], end: interval[1]), elements[1])
+        return (DateInterval(start: start, end: end), elements[1])
+    }
+    
+    private func formatDate(from stringDate: String) -> Date? {
+        if stringDate.contains("Aujourd'hui") {
+            return Calendar.current.startOfDay(for: .now)
+        }
+        if stringDate.contains("Demain") {
+            let today = Calendar.current.startOfDay(for: .now)
+            return Calendar.current.date(byAdding: .day, value: 1, to: today)
+        }
+        if let date = dateFormatter.date(from: stringDate) {
+            return Calendar.current.startOfDay(for: date)
+        }
+        return nil
+    }
+    
+    private func formatHour(from info: String, for day: Date) -> Date? {
+        let timeComponents = info.components(separatedBy: "h").compactMap { Int($0) }
+        guard timeComponents.count >= 1 else { return nil }
+        
+        return Calendar.current.date(
+            bySettingHour: timeComponents[0],
+            minute: timeComponents.count == 2 ? timeComponents[1] : 0,
+            second: 0,
+            of: day
+        )
     }
 }
