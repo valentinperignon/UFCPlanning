@@ -11,30 +11,30 @@ public class ApiFetcher {
     private let urlSession: URLSession
     
     private let planingDecoder: PlanningDecoder
-    private let trainingsDecoder: TrainingsDecoder
+    private let groupsDecoder: GroupsDecoder
     
     public init() {
         urlSession = URLSession(configuration: .default)
         planingDecoder = PlanningDecoder()
-        trainingsDecoder = TrainingsDecoder()
+        groupsDecoder = GroupsDecoder()
     }
     
-    public func trainings(with id: Int) async throws -> [Training] {
-        let (data, _) = try await urlSession.data(endpoint: .trainings(with: 0))
+    public func groups(with id: Int) async throws -> [Group] {
+        let (data, _) = try await urlSession.data(endpoint: .groups(with: 0))
         
         guard let dataString = String(data: data, encoding: .isoLatin1) else {
             throw ApiError.cannotDecodeData
         }
-        return trainingsDecoder.decode(from: dataString)
+        return groupsDecoder.decode(from: dataString)
     }
     
-    public func planning(for training: Training, with settings: PlanningSettings, user: User) async throws -> Planning {
-        let (data, _) = try await urlSession.data(endpoint: .planning(for: training.id, with: settings, for: user))
+    public func planning(for group: Group, with settings: PlanningSettings, user: User? = nil) async throws -> Planning {
+        let (data, _) = try await urlSession.data(endpoint: .planning(for: group.id, with: settings, for: user))
         
         guard let dataString = String(data: data, encoding: .isoLatin1) else {
             throw ApiError.cannotDecodeData
         }
         let days = planingDecoder.decode(from: dataString)
-        return Planning(trainingId: training.id, days: days)
+        return Planning(groupId: group.id, days: days)
     }
 }

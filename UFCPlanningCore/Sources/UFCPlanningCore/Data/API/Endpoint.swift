@@ -37,13 +37,13 @@ public struct Endpoint {
 extension Endpoint {
     static let base = Endpoint(path: "/jsp/custom/ufc")
     
-    static func trainings(with id: Int) -> Endpoint {
+    static func groups(with id: Int) -> Endpoint {
         .base.append(path: "/wmselect.jsp", queryItems: [URLQueryItem(name: "id", value: "\(id)")])
     }
     
-    static func planning(for trainingId: Int, with settings: PlanningSettings, for user: User?) -> Endpoint {
+    static func planning(for groupId: Int, with settings: PlanningSettings, for user: User?) -> Endpoint {
         .base.append(path: "/wmplanif.jsp", queryItems: [
-            URLQueryItem(name: "id", value: "\(trainingId)"),
+            URLQueryItem(name: "id", value: "\(groupId)"),
             URLQueryItem(name: "jours", value: "\(settings.numberOfDays)"),
             URLQueryItem(name: "mode", value: "\(settings.mode.rawValue)"),
             URLQueryItem(name: "color", value: settings.withColors ? "1" : "0"),

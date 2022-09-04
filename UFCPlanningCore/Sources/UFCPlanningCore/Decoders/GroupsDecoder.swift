@@ -1,5 +1,5 @@
 //
-//  TrainigsDecoder.swift
+//  GroupsDecoder.swift
 //  
 //
 //  Created by Valentin Perignon on 26/08/2022.
@@ -7,25 +7,25 @@
 
 import Foundation
 
-public class TrainingsDecoder: Decoder {
+public class GroupsDecoder: Decoder {
     private let breakCharacter: Character = ";"
     private let ancestorSign = ".."
     
-    public func decode(from data: String) -> [Training] {
+    public func decode(from data: String) -> [Group] {
         let list = data.split(whereSeparator: \.isNewline)
         return list.compactMap(transform)
     }
     
-    private func transform(sequence: String.SubSequence) -> Training? {
+    private func transform(sequence: String.SubSequence) -> Group? {
         let items = sequence.split(separator: breakCharacter)
         
         guard items.count >= 3,
               let id = Int(items[1]),
               let typeRawValue = Int(items[0]),
-              let type = TrainingType(rawValue: typeRawValue)
+              let type = GroupType(rawValue: typeRawValue)
         else { return nil }
         
         let name = String(items[2])
-        return Training(id: id, name: name, type: name == ancestorSign ? .ancestorLink : type)
+        return Group(id: id, name: name, type: name == ancestorSign ? .ancestorLink : type)
     }
 }
