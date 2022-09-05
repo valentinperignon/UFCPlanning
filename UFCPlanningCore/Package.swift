@@ -10,11 +10,15 @@ let package = Package(
         .library(name: "UFCPlanningCore", targets: ["UFCPlanningCore"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        .package(url: "https://github.com/realm/realm-swift.git", .upToNextMajor(from: "10.28.7"))
     ],
     targets: [
-        .target(name: "UFCPlanningCore", dependencies: []),
+        .target(
+            name: "UFCPlanningCore",
+            dependencies: [
+                .product(name: "RealmSwift", package: "realm-swift")
+            ]
+        ),
         .testTarget(name: "UFCPlanningCoreTests", dependencies: ["UFCPlanningCore"]),
     ]
 )

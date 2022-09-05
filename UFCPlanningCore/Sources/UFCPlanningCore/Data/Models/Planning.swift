@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import RealmSwift
 
-public class Planning {
-    public let groupId: Int
-    public let days: [Day]
+public class Planning: Object {
+    @Persisted public var days: List<Day>
     
-    public init(groupId: Int, days: [Day]) {
-        self.groupId = groupId
-        self.days = days
+    public convenience init(days: [Day]) {
+        self.init()
+        self.days = List()
+        self.days.append(objectsIn: days)
     }
 }

@@ -6,13 +6,15 @@
 //
 
 import Foundation
+import RealmSwift
 
-public class User {
-    public let id: Int
-    public let name: String
-    public let token: String?
+public class User: Object {
+    @Persisted public var id: Int
+    @Persisted public var name: String
+    public var token: String?
     
-    public init(id: Int, name: String, token: String?) {
+    public convenience init(id: Int, name: String, token: String?) {
+        self.init()
         self.id = id
         self.name = name
         self.token = token

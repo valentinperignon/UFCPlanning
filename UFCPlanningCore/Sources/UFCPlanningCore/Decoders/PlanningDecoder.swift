@@ -30,13 +30,10 @@ public class PlanningDecoder: Decoder {
                 let elements = item.components(separatedBy: ";")
                 guard elements.count >= 3,
                       let decimalColor = Int(elements[0]),
-                      let (interval, name) = getHoursAndName(from: elements[1], for: currentDate)
+                      let (start, end, name) = getHoursAndName(from: elements[1], for: currentDate)
                 else { break }
                 
-                let color = UIColor(decimal: decimalColor)
-                let room = elements[2]
-                
-                subjects.append(Subject(name: name, interval: interval, about: room, color: color))
+                subjects.append(Subject(name: name, start: start, end: end, about: elements[2], decimalColor: decimalColor))
             }
             
             parsedDays.append(Day(date: currentDate, subjects: subjects))
@@ -44,7 +41,7 @@ public class PlanningDecoder: Decoder {
         return parsedDays
     }
     
-    private func getHoursAndName(from info: String, for day: Date) -> (DateInterval, String)? {
+    private func getHoursAndName(from info: String, for day: Date) -> (Date, Date, String)? {
         let elements = info.components(separatedBy: " : ")
         
         let hours = elements[0].components(separatedBy: "-")
@@ -53,7 +50,7 @@ public class PlanningDecoder: Decoder {
               let end = formatHour(from: hours[1], for: day)
         else { return nil }
         
-        return (DateInterval(start: start, end: end), elements[1])
+        return (start, end, elements[1])
     }
     
     private func formatDate(from stringDate: String) -> Date? {

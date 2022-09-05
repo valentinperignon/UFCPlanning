@@ -41,9 +41,9 @@ extension Endpoint {
         .base.append(path: "/wmselect.jsp", queryItems: [URLQueryItem(name: "id", value: "\(id)")])
     }
     
-    static func planning(for groupId: Int, with settings: PlanningSettings, for user: User?) -> Endpoint {
+    static func planning(for groupsIds: [Int], with settings: PlanningSettings, for user: User?) -> Endpoint {
         .base.append(path: "/wmplanif.jsp", queryItems: [
-            URLQueryItem(name: "id", value: "\(groupId)"),
+            URLQueryItem(name: "id", value: groupsIds.map { "\($0)" }.joined(separator: ",")),
             URLQueryItem(name: "jours", value: "\(settings.numberOfDays)"),
             URLQueryItem(name: "mode", value: "\(settings.mode.rawValue)"),
             URLQueryItem(name: "color", value: settings.withColors ? "1" : "0"),

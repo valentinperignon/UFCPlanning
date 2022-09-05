@@ -6,13 +6,16 @@
 //
 
 import Foundation
+import RealmSwift
 
-public class Day {
-    let date: Date
-    let subjects: [Subject]
+public class Day: EmbeddedObject {
+    @Persisted var date: Date
+    @Persisted var subjects: List<Subject>
     
-    public init(date: Date, subjects: [Subject]) {
+    public convenience init(date: Date, subjects: [Subject]) {
+        self.init()
         self.date = date
-        self.subjects = subjects
+        self.subjects = List()
+        self.subjects.append(objectsIn: subjects)
     }
 }

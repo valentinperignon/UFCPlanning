@@ -7,17 +7,25 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
-public class Subject {
-    let name: String
-    let interval: DateInterval
-    let about: String
-    let color: UIColor
+public class Subject: EmbeddedObject {
+    @Persisted public var name: String
+    @Persisted public var start: Date
+    @Persisted public var end: Date
+    @Persisted public var about: String
+    @Persisted public var decimalColor: Int
     
-    public init(name: String, interval: DateInterval, about: String, color: UIColor) {
+    public var color: UIColor {
+        UIColor(decimal: decimalColor)
+    }
+    
+    public convenience init(name: String, start: Date, end: Date, about: String, decimalColor: Int) {
+        self.init()
         self.name = name
-        self.interval = interval
+        self.start = start
+        self.end = end
         self.about = about
-        self.color = color
+        self.decimalColor = decimalColor
     }
 }

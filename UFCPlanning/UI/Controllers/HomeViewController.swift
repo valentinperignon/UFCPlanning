@@ -9,7 +9,12 @@ import UFCPlanningCore
 import UIKit
 
 class HomeViewController: UITableViewController {
+    var planningManager: PlanningManager!
+    
+    var plannings = [Planning]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        planningManager = PlanningManager()
     }
 }

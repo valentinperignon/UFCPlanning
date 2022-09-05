@@ -6,19 +6,21 @@
 //
 
 import Foundation
+import RealmSwift
 
-public enum GroupType: Int {
+public enum GroupType: Int, PersistableEnum {
     case category = 1
     case ancestorLink = 2
     case final = 3
 }
 
-public class Group {
-    public let id: Int
-    public let name: String
-    public let type: GroupType
+public class Group: Object {
+    @Persisted public var id: Int
+    @Persisted public var name: String
+    @Persisted public var type: GroupType
     
-    public init(id: Int, name: String, type: GroupType) {
+    public convenience init(id: Int, name: String, type: GroupType) {
+        self.init()
         self.id = id
         self.name = name
         self.type = type
