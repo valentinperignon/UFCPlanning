@@ -9,8 +9,8 @@ import Foundation
 import RealmSwift
 
 public class Day: Object {
-    @Persisted var date: Date
-    @Persisted var subjects: List<Subject>
+    @Persisted public var date: Date
+    @Persisted public var subjects: List<Subject>
     
     public convenience init(date: Date, subjects: [Subject]) {
         self.init()
