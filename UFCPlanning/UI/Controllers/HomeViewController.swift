@@ -11,10 +11,20 @@ import UIKit
 class HomeViewController: UITableViewController {
     var planningManager: PlanningManager!
     
-    var plannings = [Planning]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         planningManager = PlanningManager()
+        
+        Task {
+            await fetchPlanning()
+        }
+    }
+    
+    private func fetchPlanning() async {
+        do {
+            try await planningManager.planning()
+        } catch {
+            print("Error: \(error.localizedDescription)")
+        }
     }
 }

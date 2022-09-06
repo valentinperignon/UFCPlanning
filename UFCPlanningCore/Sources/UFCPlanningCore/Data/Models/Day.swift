@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-public class Day: EmbeddedObject {
+public class Day: Object {
     @Persisted var date: Date
     @Persisted var subjects: List<Subject>
     

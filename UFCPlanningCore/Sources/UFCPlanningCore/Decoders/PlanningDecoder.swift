@@ -28,12 +28,13 @@ public class PlanningDecoder: Decoder {
             var subjects = [Subject]()
             for item in items {
                 let elements = item.components(separatedBy: ";")
-                guard elements.count >= 3,
+                guard elements.count >= 2,
                       let decimalColor = Int(elements[0]),
                       let (start, end, name) = getHoursAndName(from: elements[1], for: currentDate)
-                else { break }
+                else { continue }
                 
-                subjects.append(Subject(name: name, start: start, end: end, about: elements[2], decimalColor: decimalColor))
+                let about = elements.count > 3 ? elements[3] : nil
+                subjects.append(Subject(name: name, start: start, end: end, about: about, decimalColor: decimalColor))
             }
             
             parsedDays.append(Day(date: currentDate, subjects: subjects))
