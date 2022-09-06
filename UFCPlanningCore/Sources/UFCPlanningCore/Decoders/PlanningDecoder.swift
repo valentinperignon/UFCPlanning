@@ -33,7 +33,7 @@ public class PlanningDecoder: Decoder {
                       let (start, end, name) = getHoursAndName(from: elements[1], for: currentDate)
                 else { continue }
                 
-                let about = elements.count > 3 ? elements[3] : nil
+                let about = elements.count >= 3 ? elements[2] : nil
                 subjects.append(Subject(name: name, start: start, end: end, about: about, decimalColor: decimalColor))
             }
             
