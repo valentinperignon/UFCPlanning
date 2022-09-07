@@ -41,12 +41,6 @@ public class PlanningManager {
         let planning = try await apiFetcher.planning(for: [group], with: settings)
 
         let realm = getRealm()
-
-        let currentPlanning = Array(realm.objects(Day.self))
-        let daysToRemove = currentPlanning.filter { day in
-            planning.first { $0.date == day.date } == nil
-        }
-
         try? realm.write {
             realm.delete(realm.objects(Day.self))
             realm.add(planning)
