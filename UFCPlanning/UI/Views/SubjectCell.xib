@@ -10,33 +10,33 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="KGk-i7-Jjw" customClass="SubjectCell" customModule="UFCPlanning" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="361" height="65"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="68" id="KGk-i7-Jjw" customClass="SubjectCell" customModule="UFCPlanning" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="361" height="69"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="361" height="65"/>
+                <rect key="frame" x="0.0" y="0.0" width="361" height="69"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Nom du cours" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEg-pb-csv" userLabel="Name">
-                        <rect key="frame" x="6" y="23" width="349" height="17"/>
+                        <rect key="frame" x="11" y="23" width="344" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSj-K1-Y8K" userLabel="About">
-                        <rect key="frame" x="6" y="43" width="349" height="16"/>
+                        <rect key="frame" x="11" y="45.5" width="344" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10h30 - 12h00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wal-NS-Hzw">
-                        <rect key="frame" x="22" y="5.5" width="77" height="13.5"/>
+                        <rect key="frame" x="27" y="5.5" width="77" height="13.5"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jhG-HT-Cce">
-                        <rect key="frame" x="6" y="6.5" width="12" height="11"/>
+                        <rect key="frame" x="11" y="6.5" width="12" height="11"/>
                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="5GI-z6-NGA"/>
@@ -44,28 +44,28 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wnh-hf-O34" userLabel="Border">
-                        <rect key="frame" x="0.0" y="0.0" width="3" height="65"/>
+                        <rect key="frame" x="0.0" y="0.0" width="5" height="69"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="3" id="Qz8-f5-Kgn"/>
+                            <constraint firstAttribute="width" constant="5" id="Qz8-f5-Kgn"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Wal-NS-Hzw" firstAttribute="leading" secondItem="jhG-HT-Cce" secondAttribute="trailing" constant="4" id="1Av-I7-Yg2"/>
                     <constraint firstItem="QSj-K1-Y8K" firstAttribute="top" secondItem="hEg-pb-csv" secondAttribute="bottom" constant="3" id="30F-ht-9JM"/>
-                    <constraint firstItem="hEg-pb-csv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="7Ea-Cc-eyC"/>
                     <constraint firstAttribute="trailing" secondItem="hEg-pb-csv" secondAttribute="trailing" constant="6" id="FJT-5X-sEn"/>
                     <constraint firstItem="wnh-hf-O34" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Hd9-Nc-0W6"/>
-                    <constraint firstAttribute="bottom" secondItem="QSj-K1-Y8K" secondAttribute="bottom" constant="6" id="VgJ-bK-9Yj"/>
+                    <constraint firstAttribute="bottom" secondItem="QSj-K1-Y8K" secondAttribute="bottom" constant="6" id="QBz-7k-9aO"/>
                     <constraint firstItem="hEg-pb-csv" firstAttribute="top" secondItem="jhG-HT-Cce" secondAttribute="bottom" constant="5" id="Yf4-2g-BAo"/>
                     <constraint firstItem="jhG-HT-Cce" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="apQ-v0-Qah"/>
                     <constraint firstAttribute="bottom" secondItem="wnh-hf-O34" secondAttribute="bottom" id="aph-hY-FVP"/>
                     <constraint firstAttribute="leading" secondItem="wnh-hf-O34" secondAttribute="leading" id="faG-S6-lvN"/>
                     <constraint firstAttribute="trailing" secondItem="QSj-K1-Y8K" secondAttribute="trailing" constant="6" id="h4Z-c1-YrL"/>
-                    <constraint firstItem="jhG-HT-Cce" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="hnC-RC-ew8"/>
+                    <constraint firstItem="QSj-K1-Y8K" firstAttribute="leading" secondItem="wnh-hf-O34" secondAttribute="trailing" constant="6" id="nTB-k0-SB4"/>
+                    <constraint firstItem="hEg-pb-csv" firstAttribute="leading" secondItem="wnh-hf-O34" secondAttribute="trailing" constant="6" id="r90-L4-4y8"/>
+                    <constraint firstItem="jhG-HT-Cce" firstAttribute="leading" secondItem="wnh-hf-O34" secondAttribute="trailing" constant="6" id="sap-8D-CHw"/>
                     <constraint firstItem="Wal-NS-Hzw" firstAttribute="centerY" secondItem="jhG-HT-Cce" secondAttribute="centerY" id="uJS-Uv-eVf"/>
-                    <constraint firstItem="QSj-K1-Y8K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="ztN-Tc-Yts"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -75,7 +75,7 @@
                 <outlet property="name" destination="hEg-pb-csv" id="OsJ-l2-kZW"/>
                 <outlet property="time" destination="Wal-NS-Hzw" id="dPW-aK-Bk4"/>
             </connections>
-            <point key="canvasLocation" x="232.60869565217394" y="7.03125"/>
+            <point key="canvasLocation" x="232.60869565217394" y="8.3705357142857135"/>
         </tableViewCell>
     </objects>
     <resources>

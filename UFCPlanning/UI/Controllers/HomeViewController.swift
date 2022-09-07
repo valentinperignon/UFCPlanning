@@ -53,7 +53,7 @@ class HomeViewController: UIViewController {
     
     private func observeDays() {
         let realm = planningManager.getRealm()
-        planning = AnyRealmCollection(realm.objects(Day.self))
+        planning = AnyRealmCollection(realm.objects(Day.self).sorted(by: \.date))
         observationToken = planning.observe { [weak self] changes in
             guard let self = self else { return }
             switch changes {

@@ -10,15 +10,15 @@ import RealmSwift
 
 public class PlanningManager {
     public let apiFetcher: ApiFetcher
-    
+
     private let realmConfiguration: Realm.Configuration
-    
+
     public init() {
         apiFetcher = ApiFetcher()
         realmConfiguration = Realm.Configuration(schemaVersion: 1)
         print("[UFCPlanning] Realm location: \(realmConfiguration.fileURL?.path ?? "")")
     }
-    
+
     public func getRealm() -> Realm {
         do {
             return try Realm(configuration: realmConfiguration)
@@ -26,7 +26,7 @@ public class PlanningManager {
             fatalError("Cannot get a Realm instance")
         }
     }
-    
+
     public func planning() async throws {
         // TODO: Get selected groups and settings
         let group = Group(id: 15862, name: "Alt", type: .final)
@@ -37,10 +37,16 @@ public class PlanningManager {
             withSports: true,
             withExtra: true
         )
-        
+
         let planning = try await apiFetcher.planning(for: [group], with: settings)
-        
+
         let realm = getRealm()
+
+        let currentPlanning = Array(realm.objects(Day.self))
+        let daysToRemove = currentPlanning.filter { day in
+            planning.first { $0.date == day.date } == nil
+        }
+
         try? realm.write {
             realm.delete(realm.objects(Day.self))
             realm.add(planning)
