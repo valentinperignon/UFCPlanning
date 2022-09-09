@@ -10,15 +10,13 @@ import UFCPlanningCore
 import UIKit
 
 class HomeViewController: UIViewController {
-    private var viewModel: HomeViewModel!
+    private var viewModel = HomeViewModel()
     
     private var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel = HomeViewModel(planningManager: PlanningManager())
-        
         navigationItem.title = "UFC Planning"
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -45,7 +43,7 @@ class HomeViewController: UIViewController {
     
     private func configureRefreshControl() {
         tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(viewModel.refreshPlanning), for: .valueChanged)
+        tableView.refreshControl?.addTarget(viewModel, action: #selector(viewModel.refreshPlanning), for: .valueChanged)
     }
 }
 

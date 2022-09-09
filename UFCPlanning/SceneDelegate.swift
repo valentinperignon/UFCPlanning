@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UFCPlanningCore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
@@ -15,6 +16,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
         window?.makeKeyAndVisible()
+
+        Task {
+            do {
+                try await PlanningManager.shared.planning()
+            } catch {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

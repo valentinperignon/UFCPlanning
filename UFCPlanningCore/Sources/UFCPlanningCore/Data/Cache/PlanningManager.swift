@@ -9,11 +9,13 @@ import Foundation
 import RealmSwift
 
 public class PlanningManager {
+    public static let shared = PlanningManager()
+
     public let apiFetcher: ApiFetcher
 
     private let realmConfiguration: Realm.Configuration
 
-    public init() {
+    private init() {
         apiFetcher = ApiFetcher()
         realmConfiguration = Realm.Configuration(schemaVersion: 1)
         print("[UFCPlanning] Realm location: \(realmConfiguration.fileURL?.path ?? "")")

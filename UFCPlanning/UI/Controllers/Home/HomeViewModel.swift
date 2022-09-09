@@ -15,8 +15,8 @@ class HomeViewModel {
 
     private var observationToken: NotificationToken?
 
-    init(planningManager: PlanningManager) {
-        self.planningManager = planningManager
+    init() {
+        planningManager = PlanningManager.shared
         planning = AnyRealmCollection(List<Day>())
 
         observeDays()
@@ -33,7 +33,7 @@ class HomeViewModel {
     @objc func refreshPlanning() {
         Task {
             await fetchPlanning()
-            // TODO: Stop refreshing
+            // TODO: Stop view refreshing
         }
     }
 
