@@ -5,22 +5,22 @@
 //  Created by Valentin Perignon on 07/09/2022.
 //
 
-import EventKitUI
 import Foundation
 import UFCPlanningCore
 import RealmSwift
 
-class HomeViewModel {
+@MainActor class HomeViewModel {
     var planningManager: PlanningManager
     var planning: AnyRealmCollection<Day>
-    var eventStore: EKEventStore
+
+    var onListUpdate: (() -> Void)?
+    var endRefreshingList: (() -> Void)?
 
     private var observationToken: NotificationToken?
 
     init() {
         planningManager = PlanningManager.shared
         planning = AnyRealmCollection(List<Day>())
-        eventStore = EKEventStore()
 
         observeDays()
     }
@@ -36,7 +36,7 @@ class HomeViewModel {
     @objc func refreshPlanning() {
         Task {
             await fetchPlanning()
-            // TODO: Stop view refreshing
+            self.endRefreshingList?()
         }
     }
 
@@ -45,30 +45,7 @@ class HomeViewModel {
         return day.subjects[indexPath.item]
     }
 
-    func addHomework(for subject: Subject, delegate: EKEventEditViewDelegate, completion: @escaping (Bool) -> Void, presentView: @escaping (UIViewController) -> Void) {
-        eventStore.requestAccess(to: .event) { granted, error in
-            guard error == nil && granted else {
-                completion(false)
-                return
-            }
-
-            let event = EKEvent(eventStore: self.eventStore)
-            event.title = "[\(subject.name)] "
-            event.startDate = subject.start
-            event.endDate = subject.end
-            event.alarms = [EKAlarm(relativeOffset: EventAlarm.dayBefore.rawValue)]
-
-            DispatchQueue.main.async {
-                let eventVC = EKEventEditViewController()
-                eventVC.editViewDelegate = delegate
-                eventVC.eventStore = self.eventStore
-                eventVC.event = event
-
-                presentView(eventVC)
-                completion(true)
-            }
-        }
-    }
+    // MARK: - Private methods
 
     private func observeDays() {
         let realm = planningManager.getRealm()
@@ -79,10 +56,10 @@ class HomeViewModel {
             switch changes {
             case let .initial(days):
                 self.planning = days
-                // TODO: Update tableview
+                self.onListUpdate?()
             case let .update(days, _, _, _):
                 self.planning = days
-                // TODO: Update tableview
+                self.onListUpdate?()
             case let .error(error):
                 print("Error: \(error.localizedDescription)")
             }

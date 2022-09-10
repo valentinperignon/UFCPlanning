@@ -12,6 +12,7 @@ import UIKit
 
 class HomeViewController: UITableViewController {
     private var viewModel = HomeViewModel()
+    private var eventStore = EKEventStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +24,46 @@ class HomeViewController: UITableViewController {
         tableView.allowsSelection = false
 
         configureRefreshControl()
+        bindViewModel()
     }
     
     private func configureRefreshControl() {
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(viewModel, action: #selector(viewModel.refreshPlanning), for: .valueChanged)
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(viewModel, action: #selector(viewModel.refreshPlanning), for: .valueChanged)
+    }
+
+    private func bindViewModel() {
+        viewModel.onListUpdate = { [weak self] in
+            self?.tableView.reloadData()
+        }
+        viewModel.endRefreshingList = { [weak self] in
+            self?.refreshControl?.endRefreshing()
+        }
+    }
+
+    private func addHomeworkToCalendar(for subject: Subject, completion: @escaping (Bool) -> Void) {
+        eventStore.requestAccess(to: .event) { [weak self] granted, error in
+            guard let self = self, error == nil && granted else {
+                completion(false)
+                return
+            }
+
+            let event = EKEvent(eventStore: self.eventStore)
+            event.title = "[\(subject.name)] "
+            event.startDate = subject.start
+            event.endDate = subject.end
+            event.alarms = [EKAlarm(relativeOffset: EventAlarm.dayBefore.rawValue)]
+
+            DispatchQueue.main.async {
+                let eventVC = EKEventEditViewController()
+                eventVC.editViewDelegate = self
+                eventVC.eventStore = self.eventStore
+                eventVC.event = event
+
+                self.present(eventVC, animated: true)
+                completion(true)
+            }
+        }
     }
 }
 
@@ -45,7 +81,7 @@ extension HomeViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let day = viewModel.planning[section]
-        return viewModel.planning[section].subjects.count
+        return day.subjects.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,9 +99,7 @@ extension HomeViewController {
         let action = UIContextualAction(style: .normal, title: "Add to calendar") { [weak self] _, _, completion in
             guard let self = self else { return }
             let subject = self.viewModel.getSubject(at: indexPath).freeze()
-            self.viewModel.addHomework(for: subject, delegate: self, completion: completion) { viewController in
-                self.present(viewController, animated: true)
-            }
+            self.addHomeworkToCalendar(for: subject, completion: completion)
         }
         action.backgroundColor = .orange
         action.image = UIImage(systemName: "calendar.badge.plus")
