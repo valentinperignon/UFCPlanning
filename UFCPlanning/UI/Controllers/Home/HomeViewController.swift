@@ -20,7 +20,7 @@ class HomeViewController: UITableViewController {
         navigationItem.title = "UFC Planning"
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        tableView.register(UINib(nibName: "SubjectCell", bundle: nil), forCellReuseIdentifier: "SubjectCell")
+        tableView.register(UINib(nibName: SubjectCell.identifier, bundle: nil), forCellReuseIdentifier: SubjectCell.identifier)
         tableView.allowsSelection = false
 
         configureRefreshControl()
@@ -85,7 +85,7 @@ extension HomeViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SubjectCell", for: indexPath) as! SubjectCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SubjectCell.identifier, for: indexPath) as! SubjectCell
         cell.configure(with: viewModel.getSubject(at: indexPath))
 
         return cell

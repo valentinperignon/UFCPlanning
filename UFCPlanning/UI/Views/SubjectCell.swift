@@ -9,6 +9,8 @@ import UFCPlanningCore
 import UIKit
 
 class SubjectCell: UITableViewCell {
+    static let identifier = "SubjectCell"
+
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var about: UILabel!
     @IBOutlet weak var time: UILabel!
