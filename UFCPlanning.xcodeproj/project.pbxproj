@@ -14,6 +14,7 @@
 		A73A74E128B18CE5007D28EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A73A74DF28B18CE5007D28EE /* LaunchScreen.storyboard */; };
 		A73A74ED28B19316007D28EE /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = A73A74EC28B19316007D28EE /* swiftgen.yml */; };
 		A73A74EF28B1933C007D28EE /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A74EE28B1933C007D28EE /* XCAssets+Generated.swift */; };
+		A757213628CDD9880079A40A /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = A757213528CDD9880079A40A /* SFSafeSymbols */; };
 		A79D269428C616FD0069572D /* SubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79D269228C616FD0069572D /* SubjectCell.swift */; };
 		A79D269528C616FD0069572D /* SubjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A79D269328C616FD0069572D /* SubjectCell.xib */; };
 		A7A99E4928C8ED9B0035D9C6 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A99E4828C8ED9B0035D9C6 /* HomeViewModel.swift */; };
@@ -42,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A757213628CDD9880079A40A /* SFSafeSymbols in Frameworks */,
 				A7CFCA6028B8112C00051426 /* UFCPlanningCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +152,7 @@
 			name = UFCPlanning;
 			packageProductDependencies = (
 				A7CFCA5F28B8112C00051426 /* UFCPlanningCore */,
+				A757213528CDD9880079A40A /* SFSafeSymbols */,
 			);
 			productName = UFCPlanning;
 			productReference = A73A74D128B18CE4007D28EE /* UFCPlanning.app */;
@@ -180,6 +183,9 @@
 				fr,
 			);
 			mainGroup = A73A74C828B18CE4007D28EE;
+			packageReferences = (
+				A757213428CDD9880079A40A /* XCRemoteSwiftPackageReference "SFSafeSymbols" */,
+			);
 			productRefGroup = A73A74D228B18CE4007D28EE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -437,7 +443,23 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		A757213428CDD9880079A40A /* XCRemoteSwiftPackageReference "SFSafeSymbols" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SFSafeSymbols/SFSafeSymbols.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		A757213528CDD9880079A40A /* SFSafeSymbols */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A757213428CDD9880079A40A /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
+			productName = SFSafeSymbols;
+		};
 		A7CFCA5F28B8112C00051426 /* UFCPlanningCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = UFCPlanningCore;

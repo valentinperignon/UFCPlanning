@@ -7,6 +7,7 @@
 
 import EventKitUI
 import RealmSwift
+import SFSafeSymbols
 import UFCPlanningCore
 import UIKit
 
@@ -30,7 +31,7 @@ class HomeViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
 
         let settingsButton = UIBarButtonItem(
-            image: UIImage(systemName: "ellipsis"),
+            image: UIImage(systemSymbol: SFSymbol.ellipsis),
             style: .plain,
             target: self,
             action: #selector(presentSettingsViewController)
@@ -117,7 +118,7 @@ extension HomeViewController {
             self.addHomeworkToCalendar(for: subject, completion: completion)
         }
         action.backgroundColor = .orange
-        action.image = UIImage(systemName: "calendar.badge.plus")
+        action.image = UIImage(systemSymbol: SFSymbol.calendarBadgePlus)
 
         return UISwipeActionsConfiguration(actions: [action])
     }

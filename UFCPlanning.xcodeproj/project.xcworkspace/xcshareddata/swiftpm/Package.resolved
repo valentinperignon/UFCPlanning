@@ -17,6 +17,15 @@
         "revision" : "ae0ceea258fd8f58392881cc4b2228bff62f74f5",
         "version" : "10.28.7"
       }
+    },
+    {
+      "identity" : "sfsafesymbols",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SFSafeSymbols/SFSafeSymbols.git",
+      "state" : {
+        "revision" : "c8c33d947d8a1c883aa19fd24e14fd738b06e369",
+        "version" : "3.3.2"
+      }
     }
   ],
   "version" : 2
