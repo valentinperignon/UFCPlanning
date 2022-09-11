@@ -17,14 +17,25 @@ class HomeViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "UFC Planning"
-        navigationController?.navigationBar.prefersLargeTitles = true
-
         tableView.register(UINib(nibName: SubjectCell.identifier, bundle: nil), forCellReuseIdentifier: SubjectCell.identifier)
         tableView.allowsSelection = false
 
+        configureNavigationBar()
         configureRefreshControl()
         bindViewModel()
+    }
+
+    private func configureNavigationBar() {
+        navigationItem.title = "UFC Planning"
+        navigationController?.navigationBar.prefersLargeTitles = true
+
+        let settingsButton = UIBarButtonItem(
+            image: UIImage(systemName: "ellipsis"),
+            style: .plain,
+            target: self,
+            action: #selector(presentSettingsViewController)
+        )
+        navigationItem.rightBarButtonItem = settingsButton
     }
     
     private func configureRefreshControl() {
@@ -39,6 +50,10 @@ class HomeViewController: UITableViewController {
         viewModel.endRefreshingList = { [weak self] in
             self?.refreshControl?.endRefreshing()
         }
+    }
+
+    @objc private func presentSettingsViewController() {
+        print("Hello!")
     }
 
     private func addHomeworkToCalendar(for subject: Subject, completion: @escaping (Bool) -> Void) {
