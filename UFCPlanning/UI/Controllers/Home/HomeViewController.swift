@@ -76,7 +76,7 @@ class HomeViewController: UITableViewController {
         // TODO: Display settings
     }
 
-    private func addHomeworkToCalendar(for subject: Subject, completion: @escaping (Bool) -> Void) {
+    private func addHomeworkToCalendar(for subject: Lesson, completion: @escaping (Bool) -> Void) {
         eventStore.requestAccess(to: .event) { [weak self] granted, error in
             guard let self = self, error == nil && granted else {
                 completion(false)
@@ -119,12 +119,12 @@ extension HomeViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let day = viewModel.getDay(at: section, filtered: isFiltering)
-        return day.subjects.count
+        return day.lessons.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SubjectCell.identifier, for: indexPath) as! SubjectCell
-        cell.configure(with: viewModel.getSubject(at: indexPath, filtered: isFiltering))
+        cell.configure(with: viewModel.getLesson(at: indexPath, filtered: isFiltering))
 
         return cell
     }
@@ -136,7 +136,7 @@ extension HomeViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .normal, title: "Ajouter au calendrier") { [weak self] _, _, completion in
             guard let self = self else { return }
-            let subject = self.viewModel.getSubject(at: indexPath, filtered: self.isFiltering).freeze()
+            let subject = self.viewModel.getLesson(at: indexPath, filtered: self.isFiltering).freeze()
             self.addHomeworkToCalendar(for: subject, completion: completion)
         }
         action.backgroundColor = .orange

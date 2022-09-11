@@ -17,15 +17,14 @@ public class PlanningDecoder: Decoder {
         return formatter
     }()
     
-    public func decode(from data: String) -> [Day] {
+    public func decode(from data: String) -> [Lesson] {
         let days = data.components(separatedBy: "*date*;").filter { $0 != "\r\n" }
         
-        var parsedDays = [Day]()
+        var parsedLessons = [Lesson]()
         for day in days {
             var items = day.components(separatedBy: "\n")
             guard let currentDate = formatDate(from: items.removeFirst()) else { break }
             
-            var subjects = [Subject]()
             for item in items {
                 let elements = item.components(separatedBy: ";")
                 guard elements.count >= 2,
@@ -34,12 +33,10 @@ public class PlanningDecoder: Decoder {
                 else { continue }
                 
                 let about = elements.count >= 3 ? elements[2] : nil
-                subjects.append(Subject(name: name, start: start, end: end, about: about, decimalColor: decimalColor))
+                parsedLessons.append(Lesson(name: name, start: start, end: end, about: about, decimalColor: decimalColor))
             }
-            
-            parsedDays.append(Day(date: currentDate, subjects: subjects))
         }
-        return parsedDays
+        return parsedLessons
     }
     
     private func getHoursAndName(from info: String, for day: Date) -> (Date, Date, String)? {

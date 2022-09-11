@@ -28,7 +28,7 @@ public class ApiFetcher {
         return groupsDecoder.decode(from: dataString)
     }
     
-    public func planning(for groups: [Group], with settings: PlanningSettings, user: User? = nil) async throws -> [Day] {
+    public func planning(for groups: [Group], with settings: PlanningSettings, user: User? = nil) async throws -> [Lesson] {
         let (data, _) = try await urlSession.data(endpoint: .planning(for: groups.map(\.id), with: settings, for: user))
         
         guard let dataString = String(data: data, encoding: .isoLatin1) else {

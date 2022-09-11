@@ -44,7 +44,7 @@ public class PlanningManager {
 
         let realm = getRealm()
         try? realm.write {
-            realm.delete(realm.objects(Day.self))
+            realm.delete(realm.objects(Lesson.self))
             realm.add(planning)
         }
     }

@@ -20,7 +20,7 @@ class SubjectCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func configure(with subject: Subject) {
+    func configure(with subject: Lesson) {
         contentView.backgroundColor = subject.color.withAlphaComponent(0.05)
         border.backgroundColor = subject.color
         

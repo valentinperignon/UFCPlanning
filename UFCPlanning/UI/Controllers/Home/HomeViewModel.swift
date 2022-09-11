@@ -9,11 +9,21 @@ import Foundation
 import UFCPlanningCore
 import RealmSwift
 
+class DaySection {
+    let date: Date
+    var lessons: [Lesson]
+
+    init(date: Date) {
+        self.date = Calendar.current.startOfDay(for: date)
+        self.lessons = []
+    }
+}
+
 @MainActor class HomeViewModel {
     var planningManager: PlanningManager
 
-    var planning: AnyRealmCollection<Day>
-    var filteredPlanning: [Day]
+    var planning: [DaySection]
+    var filteredPlanning: [DaySection]
 
     var onListUpdate: (() -> Void)?
     var endRefreshingList: (() -> Void)?
@@ -23,10 +33,10 @@ import RealmSwift
     init() {
         planningManager = PlanningManager.shared
 
-        planning = AnyRealmCollection(List<Day>())
-        filteredPlanning = [Day]()
+        planning = [DaySection]()
+        filteredPlanning = [DaySection]()
 
-        observeDays()
+        observeLessons()
     }
 
     func fetchPlanning() async {
@@ -44,33 +54,55 @@ import RealmSwift
         }
     }
 
-    func getDay(at section: Int, filtered: Bool) -> Day {
+    func getDay(at section: Int, filtered: Bool) -> DaySection {
         return filtered ? filteredPlanning[section] : planning[section]
     }
 
-    func getSubject(at indexPath: IndexPath, filtered: Bool) -> Subject {
+    func getLesson(at indexPath: IndexPath, filtered: Bool) -> Lesson {
         let day = getDay(at: indexPath.section, filtered: filtered)
-        return day.subjects[indexPath.item]
+        return day.lessons[indexPath.item]
     }
 
     // MARK: - Private methods
 
-    private func observeDays() {
+    private func observeLessons() {
         let realm = planningManager.getRealm()
-        planning = AnyRealmCollection(realm.objects(Day.self).sorted(by: \.date))
+        let fetchedLessons = AnyRealmCollection(realm.objects(Lesson.self).sorted(by: \.start))
 
-        observationToken = planning.observe { [weak self] changes in
+        observationToken = fetchedLessons.observe { [weak self] changes in
             guard let self = self else { return }
             switch changes {
-            case let .initial(days):
-                self.planning = days
+            case let .initial(lessons):
+                self.planning = self.splitLessonsIntoSections(lessons)
                 self.onListUpdate?()
-            case let .update(days, _, _, _):
-                self.planning = days
+            case let .update(lessons, _, _, _):
+                self.planning = self.splitLessonsIntoSections(lessons)
                 self.onListUpdate?()
             case let .error(error):
                 print("Error: \(error.localizedDescription)")
             }
         }
+    }
+
+    private func splitLessonsIntoSections(_ lessons: AnyRealmCollection<Lesson>) -> [DaySection] {
+        var sections = [DaySection]()
+
+        var currentSection: DaySection?
+        for lesson in lessons {
+            if currentSection == nil {
+                currentSection = DaySection(date: lesson.start)
+            }
+            if !Calendar.current.isDate(lesson.start, inSameDayAs: currentSection!.date) {
+                sections.append(currentSection!)
+                currentSection = DaySection(date: lesson.start)
+            }
+
+            currentSection?.lessons.append(lesson)
+        }
+        if let currentSection = currentSection {
+            sections.append(currentSection)
+        }
+
+        return sections
     }
 }

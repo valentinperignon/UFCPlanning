@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import RealmSwift
 
-public class Subject: EmbeddedObject {
+public class Lesson: Object {
     @Persisted public var name: String
     @Persisted public var start: Date
     @Persisted public var end: Date
