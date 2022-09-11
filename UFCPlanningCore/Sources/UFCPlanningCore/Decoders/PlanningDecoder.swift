@@ -40,15 +40,15 @@ public class PlanningDecoder: Decoder {
     }
     
     private func getHoursAndName(from info: String, for day: Date) -> (Date, Date, String)? {
-        let elements = info.components(separatedBy: " : ")
+        var elements = info.components(separatedBy: " : ")
         
-        let hours = elements[0].components(separatedBy: "-")
+        let hours = elements.removeFirst().components(separatedBy: "-")
         guard hours.count >= 2,
               let start = formatHour(from: hours[0], for: day),
               let end = formatHour(from: hours[1], for: day)
         else { return nil }
-        
-        return (start, end, elements[1])
+
+        return (start, end, elements.joined(separator: " : "))
     }
     
     private func formatDate(from stringDate: String) -> Date? {

@@ -158,6 +158,9 @@ extension HomeViewController: EKEventEditViewDelegate {
 
 extension HomeViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        tableView.reloadData()
+        Task {
+            guard let text = searchController.searchBar.text else { return }
+            await viewModel.updateSearchResults(for: text)
+        }
     }
 }

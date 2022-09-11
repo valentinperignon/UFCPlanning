@@ -48,4 +48,13 @@ public class PlanningManager {
             realm.add(planning)
         }
     }
+
+    public func searchInPlanning(for text: String) -> Results<Lesson> {
+        let realm = getRealm()
+        let results =  realm.objects(Lesson.self).where { lesson in
+            lesson.name.contains(text, options: [.caseInsensitive, .diacriticInsensitive])
+            || lesson.about.contains(text, options: [.caseInsensitive, .diacriticInsensitive])
+        }
+        return results
+    }
 }

@@ -63,6 +63,12 @@ class DaySection {
         return day.lessons[indexPath.item]
     }
 
+    func updateSearchResults(for text: String) async {
+        let result = planningManager.searchInPlanning(for: text)
+        filteredPlanning = splitLessonsIntoSections(AnyRealmCollection(result))
+        onListUpdate?()
+    }
+
     // MARK: - Private methods
 
     private func observeLessons() {
@@ -97,7 +103,7 @@ class DaySection {
                 currentSection = DaySection(date: lesson.start)
             }
 
-            currentSection?.lessons.append(lesson)
+            currentSection!.lessons.append(lesson)
         }
         if let currentSection = currentSection {
             sections.append(currentSection)
