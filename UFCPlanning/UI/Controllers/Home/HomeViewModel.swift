@@ -11,7 +11,9 @@ import RealmSwift
 
 @MainActor class HomeViewModel {
     var planningManager: PlanningManager
+
     var planning: AnyRealmCollection<Day>
+    var filteredPlanning: [Day]
 
     var onListUpdate: (() -> Void)?
     var endRefreshingList: (() -> Void)?
@@ -20,7 +22,9 @@ import RealmSwift
 
     init() {
         planningManager = PlanningManager.shared
+
         planning = AnyRealmCollection(List<Day>())
+        filteredPlanning = [Day]()
 
         observeDays()
     }
@@ -40,8 +44,12 @@ import RealmSwift
         }
     }
 
-    func getSubject(at indexPath: IndexPath) -> Subject {
-        let day = planning[indexPath.section]
+    func getDay(at section: Int, filtered: Bool) -> Day {
+        return filtered ? filteredPlanning[section] : planning[section]
+    }
+
+    func getSubject(at indexPath: IndexPath, filtered: Bool) -> Subject {
+        let day = getDay(at: indexPath.section, filtered: filtered)
         return day.subjects[indexPath.item]
     }
 

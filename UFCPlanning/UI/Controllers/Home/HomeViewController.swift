@@ -12,8 +12,17 @@ import UFCPlanningCore
 import UIKit
 
 class HomeViewController: UITableViewController {
-    private var viewModel = HomeViewModel()
-    private var eventStore = EKEventStore()
+    private let viewModel = HomeViewModel()
+    private let eventStore = EKEventStore()
+
+    private var searchController: UISearchController!
+
+    private var isSearchBarEmpty: Bool {
+        searchController.searchBar.text?.isEmpty ?? true
+    }
+    private var isFiltering: Bool {
+        searchController.isActive && !isSearchBarEmpty
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +31,7 @@ class HomeViewController: UITableViewController {
         tableView.allowsSelection = false
 
         configureNavigationBar()
+        configureSearchBar()
         configureRefreshControl()
         bindViewModel()
     }
@@ -37,6 +47,15 @@ class HomeViewController: UITableViewController {
             action: #selector(presentSettingsViewController)
         )
         navigationItem.rightBarButtonItem = settingsButton
+    }
+
+    private func configureSearchBar() {
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Rechercher des cours"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
     
     private func configureRefreshControl() {
@@ -54,7 +73,7 @@ class HomeViewController: UITableViewController {
     }
 
     @objc private func presentSettingsViewController() {
-        print("Hello!")
+        // TODO: Display settings
     }
 
     private func addHomeworkToCalendar(for subject: Subject, completion: @escaping (Bool) -> Void) {
@@ -87,22 +106,25 @@ class HomeViewController: UITableViewController {
 
 extension HomeViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
+        if isFiltering {
+            return viewModel.filteredPlanning.count
+        }
         return viewModel.planning.count
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let day = viewModel.planning[section]
+        let day = viewModel.getDay(at: section, filtered: isFiltering)
         return day.date.formatted(.dateTime.day().month(.wide))
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let day = viewModel.planning[section]
+        let day = viewModel.getDay(at: section, filtered: isFiltering)
         return day.subjects.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SubjectCell.identifier, for: indexPath) as! SubjectCell
-        cell.configure(with: viewModel.getSubject(at: indexPath))
+        cell.configure(with: viewModel.getSubject(at: indexPath, filtered: isFiltering))
 
         return cell
     }
@@ -112,9 +134,9 @@ extension HomeViewController {
 
 extension HomeViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .normal, title: "Add to calendar") { [weak self] _, _, completion in
+        let action = UIContextualAction(style: .normal, title: "Ajouter au calendrier") { [weak self] _, _, completion in
             guard let self = self else { return }
-            let subject = self.viewModel.getSubject(at: indexPath).freeze()
+            let subject = self.viewModel.getSubject(at: indexPath, filtered: self.isFiltering).freeze()
             self.addHomeworkToCalendar(for: subject, completion: completion)
         }
         action.backgroundColor = .orange
@@ -129,5 +151,13 @@ extension HomeViewController {
 extension HomeViewController: EKEventEditViewDelegate {
     func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
         dismiss(animated: true)
+    }
+}
+
+// MARK: - UISearchResultsUpdating
+
+extension HomeViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        tableView.reloadData()
     }
 }
