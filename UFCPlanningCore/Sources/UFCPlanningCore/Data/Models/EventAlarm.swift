@@ -9,5 +9,5 @@ import Foundation
 
 public enum EventAlarm: TimeInterval {
     case noAlarm = 0
-    case dayBefore = 86400
+    case dayBefore = -86400
 }

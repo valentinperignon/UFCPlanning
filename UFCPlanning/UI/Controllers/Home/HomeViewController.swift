@@ -27,6 +27,8 @@ class HomeViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "UFC Planning"
+
         tableView.register(UINib(nibName: SubjectCell.identifier, bundle: nil), forCellReuseIdentifier: SubjectCell.identifier)
         tableView.allowsSelection = false
 
@@ -37,7 +39,6 @@ class HomeViewController: UITableViewController {
     }
 
     private func configureNavigationBar() {
-        navigationItem.title = "UFC Planning"
         navigationController?.navigationBar.prefersLargeTitles = true
 
         let settingsButton = UIBarButtonItem(
@@ -73,7 +74,7 @@ class HomeViewController: UITableViewController {
     }
 
     @objc private func presentSettingsViewController() {
-        // TODO: Display settings
+        present(SettingsViewController.instantiateInNavigationController(), animated: true)
     }
 
     private func addHomeworkToCalendar(for subject: Lesson, completion: @escaping (Bool) -> Void) {
