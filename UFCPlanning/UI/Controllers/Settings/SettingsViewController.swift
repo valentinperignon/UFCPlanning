@@ -15,6 +15,8 @@ class SettingsViewController: UITableViewController {
 
         title = "Paramètres"
 
+        tableView.register(UINib(nibName: ToggleCell.identifier, bundle: nil), forCellReuseIdentifier: ToggleCell.identifier)
+
         configureNavigationBar()
     }
 
@@ -24,6 +26,28 @@ class SettingsViewController: UITableViewController {
 
     private func configureNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+
+    private func getAboutCell(for indexPath: IndexPath) -> UITableViewCell {
+        let row = viewModel.settings[indexPath.section].items[indexPath.row]
+        switch row {
+        case .homeworkAlerts:
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "Campus"
+            return cell
+        case .campusSport:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ToggleCell.identifier, for: indexPath) as! ToggleCell
+            cell.configure(with: row, defaultValue: UserDefaults.standard.bool(forKey: "campusSport")) { value in
+                UserDefaults.standard.set(value, forKey: "campusSport")
+            }
+            return cell
+        case .visibility:
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "Visibilité"
+            return cell
+        default:
+            fatalError("Unhandled item")
+        }
     }
 }
 
@@ -57,10 +81,7 @@ extension SettingsViewController {
             cell.textLabel?.text = "Ajouter un planning"
             return cell
         case .about:
-            let item = section.items[indexPath.row]
-            let cell = UITableViewCell()
-            cell.textLabel?.text = item.name
-            return cell
+            return getAboutCell(for: indexPath)
         default:
             fatalError("Unhandled section")
         }
@@ -86,7 +107,7 @@ extension SettingsViewController {
             alertVC.addAction(UIAlertAction(title: "Annuler", style: .cancel))
             present(alertVC, animated: true)
         default:
-            fatalError("Unhandled section") 
+            break
         }
 
         tableView.deselectRow(at: indexPath, animated: true)

@@ -15,6 +15,8 @@
 		A73A74ED28B19316007D28EE /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = A73A74EC28B19316007D28EE /* swiftgen.yml */; };
 		A73A74EF28B1933C007D28EE /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A74EE28B1933C007D28EE /* XCAssets+Generated.swift */; };
 		A757213628CDD9880079A40A /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = A757213528CDD9880079A40A /* SFSafeSymbols */; };
+		A78B6DCB28D07C84000C96E0 /* ToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78B6DC928D07C84000C96E0 /* ToggleCell.swift */; };
+		A78B6DCC28D07C84000C96E0 /* ToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A78B6DCA28D07C84000C96E0 /* ToggleCell.xib */; };
 		A79D269428C616FD0069572D /* SubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79D269228C616FD0069572D /* SubjectCell.swift */; };
 		A79D269528C616FD0069572D /* SubjectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A79D269328C616FD0069572D /* SubjectCell.xib */; };
 		A7A99E4928C8ED9B0035D9C6 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A99E4828C8ED9B0035D9C6 /* HomeViewModel.swift */; };
@@ -35,6 +37,8 @@
 		A73A74EE28B1933C007D28EE /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		A757213328CCE9EB0079A40A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A75959C128B80FE200F69607 /* UFCPlanningCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UFCPlanningCore; sourceTree = "<group>"; };
+		A78B6DC928D07C84000C96E0 /* ToggleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCell.swift; sourceTree = "<group>"; };
+		A78B6DCA28D07C84000C96E0 /* ToggleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToggleCell.xib; sourceTree = "<group>"; };
 		A79D269228C616FD0069572D /* SubjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCell.swift; sourceTree = "<group>"; };
 		A79D269328C616FD0069572D /* SubjectCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubjectCell.xib; sourceTree = "<group>"; };
 		A7A99E4828C8ED9B0035D9C6 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -160,6 +164,8 @@
 		A7F6C82A28CFA2E500CDD3BF /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				A78B6DC928D07C84000C96E0 /* ToggleCell.swift */,
+				A78B6DCA28D07C84000C96E0 /* ToggleCell.xib */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -233,6 +239,7 @@
 				A79D269528C616FD0069572D /* SubjectCell.xib in Resources */,
 				A73A74E128B18CE5007D28EE /* LaunchScreen.storyboard in Resources */,
 				A73A74DE28B18CE5007D28EE /* Assets.xcassets in Resources */,
+				A78B6DCC28D07C84000C96E0 /* ToggleCell.xib in Resources */,
 				A73A74ED28B19316007D28EE /* swiftgen.yml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A73A74D928B18CE4007D28EE /* HomeViewController.swift in Sources */,
+				A78B6DCB28D07C84000C96E0 /* ToggleCell.swift in Sources */,
 				A7A99E4928C8ED9B0035D9C6 /* HomeViewModel.swift in Sources */,
 				A7F6C82628CF95CE00CDD3BF /* SettingsViewController.swift in Sources */,
 				A73A74D528B18CE4007D28EE /* AppDelegate.swift in Sources */,
