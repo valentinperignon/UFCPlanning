@@ -9,11 +9,11 @@ import Foundation
 import RealmSwift
 
 public class User: Object {
-    @Persisted public var id: Int
+    @Persisted(primaryKey: true) public var id: String
     @Persisted public var name: String
     public var token: String?
     
-    public convenience init(id: Int, name: String, token: String?) {
+    public convenience init(id: String, name: String, token: String?) {
         self.init()
         self.id = id
         self.name = name

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ButtonCell" customModule="UFCPlanning" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RS2-7k-wj8">
+                        <rect key="frame" x="16" y="6.6666666666666679" width="31" height="31.000000000000004"/>
+                        <color key="tintColor" name="AccentColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="31" id="7xb-DX-Crz"/>
+                            <constraint firstAttribute="height" constant="31" id="MVy-fE-qqW"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9Q-Me-ToE">
+                        <rect key="frame" x="57" y="11.666666666666664" width="41.333333333333343" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" name="AccentColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="r9Q-Me-ToE" firstAttribute="leading" secondItem="RS2-7k-wj8" secondAttribute="trailing" constant="10" id="Ql0-Kv-zag"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="r9Q-Me-ToE" secondAttribute="trailing" constant="16" id="YfD-Rm-NiP"/>
+                    <constraint firstItem="r9Q-Me-ToE" firstAttribute="centerY" secondItem="RS2-7k-wj8" secondAttribute="centerY" id="f8m-BH-DDw"/>
+                    <constraint firstItem="RS2-7k-wj8" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="uDE-RV-tPt"/>
+                    <constraint firstItem="RS2-7k-wj8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="z2f-Di-aDx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="icon" destination="RS2-7k-wj8" id="lv3-C1-g9t"/>
+                <outlet property="label" destination="r9Q-Me-ToE" id="83I-Ql-YAt"/>
+            </connections>
+            <point key="canvasLocation" x="135.38461538461539" y="20.616113744075829"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="1" green="0.5" blue="0.26024866104125977" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

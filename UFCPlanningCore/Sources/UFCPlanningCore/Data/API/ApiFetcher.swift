@@ -18,7 +18,21 @@ public class ApiFetcher {
         planingDecoder = PlanningDecoder()
         groupsDecoder = GroupsDecoder()
     }
-    
+
+    public func connect(login: String, password: String) async throws -> User {
+        let (data, _) = try await urlSession.data(endpoint: .connect(login: login, password: password))
+
+        guard let dataString = String(data: data, encoding: .isoLatin1) else {
+            throw ApiError.cannotDecodeData
+        }
+        if dataString.contains("erreur") {
+            throw ApiError.wrongLoginOrPassword
+        }
+
+        let elements = dataString.components(separatedBy: ";")
+        return User(id: elements[1], name: elements[3], token: elements[2])
+    }
+
     public func groups(with id: Int) async throws -> [Group] {
         let (data, _) = try await urlSession.data(endpoint: .groups(with: 0))
         

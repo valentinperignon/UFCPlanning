@@ -7,11 +7,13 @@
 
 import Foundation
 import RealmSwift
+import Security
 
 public class PlanningManager {
     public static let shared = PlanningManager()
 
     public let apiFetcher: ApiFetcher
+    public var user: User?
 
     private let realmConfiguration: Realm.Configuration
 
@@ -19,6 +21,8 @@ public class PlanningManager {
         apiFetcher = ApiFetcher()
         realmConfiguration = Realm.Configuration(schemaVersion: 1)
         print("[UFCPlanning] Realm location: \(realmConfiguration.fileURL?.path ?? "")")
+
+        try? getUser()
     }
 
     public func getRealm() -> Realm {
@@ -28,6 +32,42 @@ public class PlanningManager {
             fatalError("Cannot get a Realm instance")
         }
     }
+
+    // MARK: - User
+
+    public func saveUser(login: String, password: String) async throws {
+        let fetchedUser = try await apiFetcher.connect(login: login, password: password)
+        let realm = getRealm()
+        try? realm.write {
+            realm.add(fetchedUser)
+        }
+
+        user = fetchedUser.freeze()
+        try KeychainHelper.save(password: fetchedUser.token!, for: fetchedUser.id)
+    }
+
+    public func removeUser() throws {
+        guard let user = user else { return }
+
+        let userId = user.id
+        let realm = getRealm()
+        try? realm.write {
+            realm.delete(user)
+        }
+        self.user = nil
+
+        try KeychainHelper.removePassword(for: userId)
+    }
+
+    private func getUser() throws {
+        let realm = getRealm()
+        guard let user = realm.objects(User.self).first?.freeze() else { return }
+
+        user.token = try KeychainHelper.getPassword(for: user.id)
+        self.user = user
+    }
+
+    // MARK: - Planning
 
     public func planning() async throws {
         // TODO: Get selected groups and settings
@@ -40,7 +80,7 @@ public class PlanningManager {
             withExtra: true
         )
 
-        let planning = try await apiFetcher.planning(for: [group], with: settings)
+        let planning = try await apiFetcher.planning(for: [group], with: settings, user: user)
 
         let realm = getRealm()
         try? realm.write {

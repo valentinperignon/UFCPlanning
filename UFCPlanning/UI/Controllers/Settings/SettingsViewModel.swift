@@ -6,17 +6,17 @@
 //
 
 import Foundation
+import UFCPlanningCore
 import SFSafeSymbols
 import UIKit
 
 struct SettingsSection: Equatable {
     let id: Int
-    let name: String
     let items: [SettingsItem]
 
-    static let account = SettingsSection(id: 0, name: "Compte", items: [.account])
-    static let plannings = SettingsSection(id: 1, name: "Plannings", items: [.plannings])
-    static let about = SettingsSection(id: 2, name: "Autres", items: [.visibility, .campusSport, .homeworkAlerts])
+    static let account = SettingsSection(id: 0, items: [.account])
+    static let plannings = SettingsSection(id: 1, items: [.plannings])
+    static let about = SettingsSection(id: 2, items: [.visibility, .campusSport, .homeworkAlerts])
 
     static func ==(lhs: SettingsSection, rhs: SettingsSection) -> Bool {
         return lhs.id == rhs.id
@@ -28,9 +28,9 @@ struct SettingsItem: Equatable {
     let icon: SFSymbol
     let name: String
 
-    static let account = SettingsItem(id: 0, icon: .personCropCircle, name: "Mon compte")
+    static let account = SettingsItem(id: 0, icon: .personCropCircle, name: "Se connecter")
 
-    static let plannings = SettingsItem(id: 1, icon: .calendar, name: "Plannings")
+    static let plannings = SettingsItem(id: 1, icon: .calendar, name: "Ajouter un groupe")
 
     static let visibility = SettingsItem(id: 2, icon: .eyes, name: "Visibilité")
     static let campusSport = SettingsItem(id: 3, icon: .figureWalk, name: "Activités Campus Sport")
@@ -42,9 +42,20 @@ struct SettingsItem: Equatable {
 }
 
 class SettingsViewModel {
+    let planningManager: PlanningManager
     let settings: [SettingsSection]
 
+    var isUserConnected: Bool {
+        planningManager.user != nil
+    }
+
     init() {
+        planningManager = PlanningManager.shared
         settings = [.account, .plannings, .about]
+    }
+
+    func connectUser(login: String, password: String) async throws {
+        guard planningManager.user == nil else { return }
+        try await planningManager.saveUser(login: login, password: password)
     }
 }

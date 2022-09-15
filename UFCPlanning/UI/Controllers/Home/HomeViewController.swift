@@ -115,7 +115,7 @@ extension HomeViewController {
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let day = viewModel.getDay(at: section, filtered: isFiltering)
-        return day.date.formatted(.dateTime.day().month(.wide))
+        return day.date.formatted(.dateTime.weekday(.wide).day().month(.wide))
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -36,6 +36,14 @@ public struct Endpoint {
 
 extension Endpoint {
     static let base = Endpoint(path: "/jsp/custom/ufc")
+
+    static func connect(login: String, password: String) -> Endpoint {
+        .base.append(path: "/wmconnect.jsp", queryItems: [
+            URLQueryItem(name: "login", value: login),
+            URLQueryItem(name: "mdp", value: password),
+            URLQueryItem(name: "typeid", value: "HA")
+        ])
+    }
     
     static func groups(with id: Int) -> Endpoint {
         .base.append(path: "/wmselect.jsp", queryItems: [URLQueryItem(name: "id", value: "\(id)")])
@@ -49,7 +57,7 @@ extension Endpoint {
             URLQueryItem(name: "color", value: settings.withColors ? "1" : "0"),
             URLQueryItem(name: "sports", value: settings.withSports ? "O" : "N"),
             URLQueryItem(name: "extra", value: settings.withExtra ? "O" : "N"),
-            URLQueryItem(name: "idetu", value: "\(user?.id ?? 0)"),
+            URLQueryItem(name: "idetu", value: user?.id ?? "0"),
             URLQueryItem(name: "connexion", value: user?.token)
         ])
     }

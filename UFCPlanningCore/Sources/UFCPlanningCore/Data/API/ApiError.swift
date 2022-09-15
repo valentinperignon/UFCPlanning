@@ -9,4 +9,5 @@ import Foundation
 
 enum ApiError: Error {
     case cannotDecodeData
+    case wrongLoginOrPassword
 }
