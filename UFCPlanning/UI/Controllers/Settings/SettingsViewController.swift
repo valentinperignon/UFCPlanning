@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol SettingsPresenterDelegate {
+    func didDismissSettings()
+}
+
 class SettingsViewController: UITableViewController {
     private let viewModel = SettingsViewModel()
+
+    public var delegate: SettingsPresenterDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +28,14 @@ class SettingsViewController: UITableViewController {
         configureNavigationBar()
     }
 
-    static func instantiateInNavigationController() -> UINavigationController {
-        return UINavigationController(rootViewController: SettingsViewController(style: .insetGrouped))
+    override func viewDidDisappear(_ animated: Bool) {
+        delegate?.didDismissSettings()
+    }
+
+    static func instantiateInNavigationController(delegate: SettingsPresenterDelegate?) -> UINavigationController {
+        let viewController = SettingsViewController(style: .insetGrouped)
+        viewController.delegate = delegate
+        return UINavigationController(rootViewController: viewController)
     }
 
     private func configureNavigationBar() {
@@ -78,7 +90,7 @@ class SettingsViewController: UITableViewController {
                 do {
                     try await self.viewModel.connectUser(login: login, password: password)
                 } catch {
-                    print("Error")
+                    print("Error while connecting user")
                 }
             }
         })
@@ -91,7 +103,11 @@ class SettingsViewController: UITableViewController {
                                         message: "Voulez-vous vraiment vous déconnecter ?",
                                         preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "Se déconnecter", style: .destructive) { _ in
-            // TODO
+            do {
+                try self.viewModel.disconnectUser()
+            } catch {
+                print("Error while disconnecting user")
+            }
         })
         alertVC.addAction(UIAlertAction(title: "Annuler", style: .cancel))
         present(alertVC, animated: true)

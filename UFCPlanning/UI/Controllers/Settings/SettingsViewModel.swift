@@ -58,4 +58,9 @@ class SettingsViewModel {
         guard planningManager.user == nil else { return }
         try await planningManager.saveUser(login: login, password: password)
     }
+
+    func disconnectUser() throws {
+        guard planningManager.user != nil else { return }
+        try planningManager.removeUser()
+    }
 }

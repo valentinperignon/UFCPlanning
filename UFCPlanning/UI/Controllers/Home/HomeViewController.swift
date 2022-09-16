@@ -74,7 +74,11 @@ class HomeViewController: UITableViewController {
     }
 
     @objc private func presentSettingsViewController() {
-        present(SettingsViewController.instantiateInNavigationController(), animated: true)
+        present(SettingsViewController.instantiateInNavigationController(delegate: self), animated: true) {
+            Task {
+                await self.viewModel.fetchPlanning()
+            }
+        }
     }
 
     private func addHomeworkToCalendar(for subject: Lesson, completion: @escaping (Bool) -> Void) {
@@ -162,6 +166,16 @@ extension HomeViewController: UISearchResultsUpdating {
         Task {
             guard let text = searchController.searchBar.text else { return }
             await viewModel.updateSearchResults(for: text)
+        }
+    }
+}
+
+// MARK: - SettingsPresenterDelegate
+
+extension HomeViewController: SettingsPresenterDelegate {
+    func didDismissSettings() {
+        Task {
+            await viewModel.fetchPlanning()
         }
     }
 }

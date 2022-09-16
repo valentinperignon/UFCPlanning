@@ -37,17 +37,20 @@ public class PlanningManager {
 
     public func saveUser(login: String, password: String) async throws {
         let fetchedUser = try await apiFetcher.connect(login: login, password: password)
+        let token = fetchedUser.token!
+
         let realm = getRealm()
         try? realm.write {
             realm.add(fetchedUser)
         }
 
         user = fetchedUser.freeze()
-        try KeychainHelper.save(password: fetchedUser.token!, for: fetchedUser.id)
+        user?.token = token
+        try KeychainHelper.save(password: token, for: fetchedUser.id)
     }
 
     public func removeUser() throws {
-        guard let user = user else { return }
+        guard let user = user?.thaw() else { return }
 
         let userId = user.id
         let realm = getRealm()
