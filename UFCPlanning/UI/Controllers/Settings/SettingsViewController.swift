@@ -84,11 +84,13 @@ class SettingsViewController: UITableViewController {
             textField.placeholder = "Mot de passe"
             textField.isSecureTextEntry = true
         }
-        alertVC.addAction(UIAlertAction(title: "Valider", style: .default) { _ in
-            guard let login = alertVC.textFields?[0].text, let password = alertVC.textFields?[1].text else { return }
+        alertVC.addAction(UIAlertAction(title: "Valider", style: .default) { [weak self] _ in
+            guard let self = self,
+                  let login = alertVC.textFields?[0].text, let password = alertVC.textFields?[1].text else { return }
             Task {
                 do {
                     try await self.viewModel.connectUser(login: login, password: password)
+                    self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
                 } catch {
                     print("Error while connecting user")
                 }
@@ -102,9 +104,11 @@ class SettingsViewController: UITableViewController {
         let alertVC = UIAlertController(title: "Mon compte",
                                         message: "Voulez-vous vraiment vous déconnecter ?",
                                         preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "Se déconnecter", style: .destructive) { _ in
+        alertVC.addAction(UIAlertAction(title: "Se déconnecter", style: .destructive) { [weak self] _ in
+            guard let self = self else { return }
             do {
                 try self.viewModel.disconnectUser()
+                self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
             } catch {
                 print("Error while disconnecting user")
             }
