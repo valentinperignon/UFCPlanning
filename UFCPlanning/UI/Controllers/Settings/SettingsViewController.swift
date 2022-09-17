@@ -24,6 +24,7 @@ class SettingsViewController: UITableViewController {
         tableView.register(UINib(nibName: ToggleCell.identifier, bundle: nil), forCellReuseIdentifier: ToggleCell.identifier)
         tableView.register(UINib(nibName: ButtonCell.identifier, bundle: nil), forCellReuseIdentifier: ButtonCell.identifier)
         tableView.register(UINib(nibName: UserCell.identifier, bundle: nil), forCellReuseIdentifier: UserCell.identifier)
+        tableView.register(UINib(nibName: OptionCell.identifier, bundle: nil), forCellReuseIdentifier: OptionCell.identifier)
 
         configureNavigationBar()
     }
@@ -57,8 +58,8 @@ class SettingsViewController: UITableViewController {
         let row = viewModel.settings[indexPath.section].items[indexPath.row]
         switch row {
         case .homeworkAlerts:
-            let cell = UITableViewCell()
-            cell.textLabel?.text = "Campus"
+            let cell = tableView.dequeueReusableCell(withIdentifier: OptionCell.identifier, for: indexPath) as! OptionCell
+            cell.configure(with: row, value: "1 jour avant")
             return cell
         case .campusSport:
             let cell = tableView.dequeueReusableCell(withIdentifier: ToggleCell.identifier, for: indexPath) as! ToggleCell
@@ -67,8 +68,8 @@ class SettingsViewController: UITableViewController {
             }
             return cell
         case .visibility:
-            let cell = UITableViewCell()
-            cell.textLabel?.text = "Visibilité"
+            let cell = tableView.dequeueReusableCell(withIdentifier: OptionCell.identifier, for: indexPath) as! OptionCell
+            cell.configure(with: row, value: "60 jours")
             return cell
         default:
             fatalError("Unhandled item")
