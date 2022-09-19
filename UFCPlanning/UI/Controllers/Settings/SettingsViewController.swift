@@ -111,7 +111,7 @@ class SettingsViewController: UITableViewController {
                 do {
                     try await self.viewModel.connectUser(login: login, password: password)
                     self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
-                } catch {
+                } catch ApiError.wrongLoginOrPassword {
                     let errorVC = UIAlertController(
                         title: "Erreur",
                         message: "Mauvais identifiant ou mot de passe",
@@ -119,6 +119,8 @@ class SettingsViewController: UITableViewController {
                     )
                     errorVC.addAction(UIAlertAction(title: "Ok", style: .default))
                     self.present(errorVC, animated: true)
+                } catch {
+                    print("Error while logging in user: \(error.localizedDescription)")
                 }
             }
         })

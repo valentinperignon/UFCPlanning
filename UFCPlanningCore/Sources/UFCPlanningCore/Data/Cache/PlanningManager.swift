@@ -100,6 +100,8 @@ public class PlanningManager {
     public func planning() async throws {
         let groups = loadGroups()
         let settings = loadSettings()
+        guard !groups.isEmpty else { return }
+
         let planning = try await apiFetcher.planning(for: groups, with: settings, user: user)
 
         let realm = getRealm()
