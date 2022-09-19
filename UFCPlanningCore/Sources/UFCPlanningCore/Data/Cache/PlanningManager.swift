@@ -81,14 +81,26 @@ public class PlanningManager {
         }
     }
 
+    public func toggleVisibility(of group: Group) {
+        let realm = getRealm()
+        try? realm.write {
+            group.isVisible = !group.isVisible
+        }
+    }
+
+    public func delete(group: Group) {
+        let realm = getRealm()
+        try? realm.write {
+            realm.delete(group)
+        }
+    }
+
     // MARK: - Planning
 
     public func planning() async throws {
-        // TODO: Get selected groups and settings
-        let group = Group(id: 15862, name: "Alt", type: .final)
+        let groups = loadGroups()
         let settings = loadSettings()
-
-        let planning = try await apiFetcher.planning(for: [group], with: settings, user: user)
+        let planning = try await apiFetcher.planning(for: groups, with: settings, user: user)
 
         let realm = getRealm()
         try? realm.write {
@@ -104,6 +116,14 @@ public class PlanningManager {
             || lesson.about.contains(text, options: [.caseInsensitive, .diacriticInsensitive])
         }
         return results
+    }
+
+    // MARK: - Private methods
+
+    private func loadGroups() -> [Group] {
+        let realm = getRealm()
+        let groups = realm.objects(Group.self).where { $0.isVisible == true }
+        return Array(groups)
     }
 
     private func loadSettings() -> PlanningSettings {

@@ -22,11 +22,13 @@ class SettingsViewController: UITableViewController {
 
         title = "Paramètres"
 
-        tableView.register(UINib(nibName: ToggleCell.identifier, bundle: nil), forCellReuseIdentifier: ToggleCell.identifier)
-        tableView.register(UINib(nibName: ButtonCell.identifier, bundle: nil), forCellReuseIdentifier: ButtonCell.identifier)
         tableView.register(UINib(nibName: UserCell.identifier, bundle: nil), forCellReuseIdentifier: UserCell.identifier)
+        tableView.register(UINib(nibName: GroupCell.identifier, bundle: nil), forCellReuseIdentifier: GroupCell.identifier)
+        tableView.register(UINib(nibName: ButtonCell.identifier, bundle: nil), forCellReuseIdentifier: ButtonCell.identifier)
+        tableView.register(UINib(nibName: ToggleCell.identifier, bundle: nil), forCellReuseIdentifier: ToggleCell.identifier)
         tableView.register(UINib(nibName: OptionCell.identifier, bundle: nil), forCellReuseIdentifier: OptionCell.identifier)
 
+        bindViewModel()
         configureNavigationBar()
     }
 
@@ -38,6 +40,21 @@ class SettingsViewController: UITableViewController {
         let viewController = SettingsViewController(style: .insetGrouped)
         viewController.delegate = delegate
         return UINavigationController(rootViewController: viewController)
+    }
+
+    private func bindViewModel() {
+        viewModel.updateList = { [weak self] deletions, insertions, modifications, shouldReload in
+            guard let self = self else { return }
+            if shouldReload {
+                self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
+            } else {
+                self.tableView.performBatchUpdates {
+                    self.tableView.deleteRows(at: deletions.map { IndexPath(row: $0, section: 1) }, with: .automatic)
+                    self.tableView.insertRows(at: insertions.map { IndexPath(row: $0, section: 1) }, with: .automatic)
+                    self.tableView.reloadRows(at: modifications.map { IndexPath(row: $0, section: 1) }, with: .automatic)
+                }
+            }
+        }
     }
 
     private func configureNavigationBar() {
@@ -150,7 +167,7 @@ extension SettingsViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if viewModel.settings[section] == SettingsSection.plannings {
-            return 1
+            return viewModel.groups.count + 1
         }
         return viewModel.settings[section].items.count
     }
@@ -161,8 +178,20 @@ extension SettingsViewController {
         case .account:
             return getAccountCell(for: indexPath)
         case .plannings:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ButtonCell.identifier, for: indexPath) as! ButtonCell
-            cell.configure(with: .plannings)
+            if indexPath.row == viewModel.groups.count {
+                let cell = tableView.dequeueReusableCell(withIdentifier: ButtonCell.identifier, for: indexPath) as! ButtonCell
+                cell.configure(with: .plannings)
+                return cell
+            }
+            let group = viewModel.groups[indexPath.row]
+            let cell = tableView.dequeueReusableCell(withIdentifier: GroupCell.identifier, for: indexPath) as! GroupCell
+            cell.configure(with: group)
+            cell.hideGroup = { [weak self] in
+                self?.viewModel.planningManager.toggleVisibility(of: group)
+            }
+            cell.deleteGroup = { [weak self] in
+                self?.viewModel.planningManager.delete(group: group)
+            }
             return cell
         case .about:
             return getAboutCell(for: indexPath)
@@ -189,7 +218,7 @@ extension SettingsViewController {
             guard option != .campusSport else { return }
             didTap(option: option)
         case .plannings:
-            if section.items[indexPath.row] == .plannings {
+            if indexPath.row == viewModel.groups.count {
                 let groupsViewController = GroupsViewController.instantiateInNavigationController()
                 present(groupsViewController, animated: true)
             }

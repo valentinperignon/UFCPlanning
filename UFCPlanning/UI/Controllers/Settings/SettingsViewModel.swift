@@ -7,6 +7,7 @@
 
 import Foundation
 import UFCPlanningCore
+import RealmSwift
 import SFSafeSymbols
 import UIKit
 
@@ -50,16 +51,39 @@ struct SettingsRow: Equatable {
 }
 
 class SettingsViewModel {
-    let planningManager: PlanningManager
-    let settings: [SettingsSection]
+    let planningManager = PlanningManager.shared
+    let settings: [SettingsSection] = [.account, .plannings, .about]
+
+    var groups = [Group]()
+    var observationToken: NotificationToken?
+
+    var updateList: (([Int], [Int], [Int], Bool) -> Void)?
 
     var isUserConnected: Bool {
         planningManager.user != nil
     }
 
     init() {
-        planningManager = PlanningManager.shared
-        settings = [.account, .plannings, .about]
+        observeGroups()
+    }
+
+    func observeGroups() {
+        let realm = planningManager.getRealm()
+        let fetchedGroups = realm.objects(Group.self)
+
+        observationToken = fetchedGroups.observe { [weak self] changes in
+            guard let self = self else { return }
+            switch changes {
+            case let .initial(groups):
+                self.groups = Array(groups)
+                self.updateList?([], [], [], true)
+            case let .update(groups, deletions, insertions, modifications):
+                self.groups = Array(groups)
+                self.updateList?(deletions, insertions, modifications, false)
+            case let .error(error):
+                print("Error while observing groups: \(error.localizedDescription)")
+            }
+        }
     }
 
     func connectUser(login: String, password: String) async throws {
