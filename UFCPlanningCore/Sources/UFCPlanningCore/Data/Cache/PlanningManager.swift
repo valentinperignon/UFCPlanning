@@ -75,13 +75,7 @@ public class PlanningManager {
     public func planning() async throws {
         // TODO: Get selected groups and settings
         let group = Group(id: 15862, name: "Alt", type: .final)
-        let settings = PlanningSettings(
-            numberOfDays: 60,
-            mode: .separatedByDate,
-            withColors: true,
-            withSports: true,
-            withExtra: true
-        )
+        let settings = loadSettings()
 
         let planning = try await apiFetcher.planning(for: [group], with: settings, user: user)
 
@@ -99,5 +93,17 @@ public class PlanningManager {
             || lesson.about.contains(text, options: [.caseInsensitive, .diacriticInsensitive])
         }
         return results
+    }
+
+    private func loadSettings() -> PlanningSettings {
+        let visibility = VisibilityDays(rawValue: UserDefaults.standard.integer(forKey: "daysNumber")) ?? .defaultValue
+        let campusSport = UserDefaults.standard.bool(forKey: "campusSport")
+        return PlanningSettings(
+            numberOfDays: visibility.rawValue,
+            mode: .separatedByDate,
+            withColors: true,
+            withSports: campusSport,
+            withExtra: true
+        )
     }
 }

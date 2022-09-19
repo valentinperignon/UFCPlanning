@@ -20,7 +20,7 @@ class ToggleCell: UITableViewCell {
         selectionStyle = .none
     }
 
-    func configure(with item: SettingsItem, defaultValue: Bool, toggleHandler: @escaping (Bool) -> Void) {
+    func configure(with item: SettingsRow, defaultValue: Bool, toggleHandler: @escaping (Bool) -> Void) {
         label.text = item.name
         switchButton.setOn(defaultValue, animated: false)
         self.toggleHandler = toggleHandler

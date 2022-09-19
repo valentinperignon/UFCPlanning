@@ -21,6 +21,8 @@
 		A780FDF028D3C7AA0003B6A6 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A780FDEE28D3C7AA0003B6A6 /* UserCell.xib */; };
 		A780FDF928D5FB730003B6A6 /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780FDF728D5FB730003B6A6 /* OptionCell.swift */; };
 		A780FDFA28D5FB730003B6A6 /* OptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A780FDF828D5FB730003B6A6 /* OptionCell.xib */; };
+		A780FDFD28D5FE030003B6A6 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780FDFB28D5FE030003B6A6 /* GroupCell.swift */; };
+		A780FDFE28D5FE030003B6A6 /* GroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A780FDFC28D5FE030003B6A6 /* GroupCell.xib */; };
 		A78B6DCB28D07C84000C96E0 /* ToggleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78B6DC928D07C84000C96E0 /* ToggleCell.swift */; };
 		A78B6DCC28D07C84000C96E0 /* ToggleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A78B6DCA28D07C84000C96E0 /* ToggleCell.xib */; };
 		A79D269428C616FD0069572D /* SubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79D269228C616FD0069572D /* SubjectCell.swift */; };
@@ -49,6 +51,8 @@
 		A780FDEE28D3C7AA0003B6A6 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		A780FDF728D5FB730003B6A6 /* OptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
 		A780FDF828D5FB730003B6A6 /* OptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionCell.xib; sourceTree = "<group>"; };
+		A780FDFB28D5FE030003B6A6 /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
+		A780FDFC28D5FE030003B6A6 /* GroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GroupCell.xib; sourceTree = "<group>"; };
 		A78B6DC928D07C84000C96E0 /* ToggleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleCell.swift; sourceTree = "<group>"; };
 		A78B6DCA28D07C84000C96E0 /* ToggleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToggleCell.xib; sourceTree = "<group>"; };
 		A79D269228C616FD0069572D /* SubjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectCell.swift; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 				A780FDEE28D3C7AA0003B6A6 /* UserCell.xib */,
 				A780FDF728D5FB730003B6A6 /* OptionCell.swift */,
 				A780FDF828D5FB730003B6A6 /* OptionCell.xib */,
+				A780FDFB28D5FE030003B6A6 /* GroupCell.swift */,
+				A780FDFC28D5FE030003B6A6 /* GroupCell.xib */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -255,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A780FDFA28D5FB730003B6A6 /* OptionCell.xib in Resources */,
+				A780FDFE28D5FE030003B6A6 /* GroupCell.xib in Resources */,
 				A79D269528C616FD0069572D /* SubjectCell.xib in Resources */,
 				A73A74E128B18CE5007D28EE /* LaunchScreen.storyboard in Resources */,
 				A73A74DE28B18CE5007D28EE /* Assets.xcassets in Resources */,
@@ -279,6 +286,7 @@
 				A7F6C82628CF95CE00CDD3BF /* SettingsViewController.swift in Sources */,
 				A73A74D528B18CE4007D28EE /* AppDelegate.swift in Sources */,
 				A73A74D728B18CE4007D28EE /* SceneDelegate.swift in Sources */,
+				A780FDFD28D5FE030003B6A6 /* GroupCell.swift in Sources */,
 				A73A74EF28B1933C007D28EE /* XCAssets+Generated.swift in Sources */,
 				A780FDF928D5FB730003B6A6 /* OptionCell.swift in Sources */,
 				A79D269428C616FD0069572D /* SubjectCell.swift in Sources */,

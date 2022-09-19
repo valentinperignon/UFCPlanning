@@ -12,7 +12,7 @@ import UIKit
 
 struct SettingsSection: Equatable {
     let id: Int
-    let items: [SettingsItem]
+    let items: [SettingsRow]
 
     static let account = SettingsSection(id: 0, items: [.account])
     static let plannings = SettingsSection(id: 1, items: [.plannings])
@@ -23,20 +23,28 @@ struct SettingsSection: Equatable {
     }
 }
 
-struct SettingsItem: Equatable {
+struct SettingsRow: Equatable {
     let id: Int
     let icon: SFSymbol
     let name: String
+    let userDefaultsKey: String?
 
-    static let account = SettingsItem(id: 0, icon: .personCropCircle, name: "Se connecter")
+    static let account = SettingsRow(id: 0, icon: .personCropCircle, name: "Se connecter")
 
-    static let plannings = SettingsItem(id: 1, icon: .calendar, name: "Ajouter un groupe")
+    static let plannings = SettingsRow(id: 1, icon: .calendar, name: "Ajouter un groupe")
 
-    static let visibility = SettingsItem(id: 2, icon: .eyes, name: "Visibilité")
-    static let campusSport = SettingsItem(id: 3, icon: .figureWalk, name: "Activités Campus Sport")
-    static let homeworkAlerts = SettingsItem(id: 4, icon: .bell, name: "Alertes pour les devoirs")
+    static let visibility = SettingsRow(id: 2, icon: .eyes, name: "Jours à afficher", userDefaultsKey: "daysNumber")
+    static let campusSport = SettingsRow(id: 3, icon: .figureWalk, name: "Activités Campus Sport", userDefaultsKey: "campusSport")
+    static let homeworkAlerts = SettingsRow(id: 4, icon: .bell, name: "Alerte pour les devoirs", userDefaultsKey: "homeworkAlert")
 
-    static func ==(lhs: SettingsItem, rhs: SettingsItem) -> Bool {
+    init(id: Int, icon: SFSymbol, name: String, userDefaultsKey: String? = nil) {
+        self.id = id
+        self.icon = icon
+        self.name = name
+        self.userDefaultsKey = userDefaultsKey
+    }
+
+    static func ==(lhs: SettingsRow, rhs: SettingsRow) -> Bool {
         return lhs.id == rhs.id
     }
 }

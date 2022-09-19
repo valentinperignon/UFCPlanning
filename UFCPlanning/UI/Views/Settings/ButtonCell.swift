@@ -17,7 +17,7 @@ class ButtonCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func configure(with item: SettingsItem) {
+    func configure(with item: SettingsRow) {
         icon.image = UIImage(systemSymbol: item.icon)
         label.text = item.name
     }

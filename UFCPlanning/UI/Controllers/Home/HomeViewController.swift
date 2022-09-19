@@ -42,7 +42,7 @@ class HomeViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
 
         let settingsButton = UIBarButtonItem(
-            image: UIImage(systemSymbol: SFSymbol.ellipsis),
+            image: UIImage(systemSymbol: SFSymbol.switch2),
             style: .plain,
             target: self,
             action: #selector(presentSettingsViewController)
@@ -92,7 +92,11 @@ class HomeViewController: UITableViewController {
             event.title = "[\(subject.name)] "
             event.startDate = subject.start
             event.endDate = subject.end
-            event.alarms = [EKAlarm(relativeOffset: EventAlarm.dayBefore.rawValue)]
+
+            let alarmPreference = EventAlarm(rawValue: UserDefaults.standard.double(forKey: "homeworkAlert")) ?? .defaultValue
+            if alarmPreference != .noAlarm {
+                event.alarms = [EKAlarm(relativeOffset: alarmPreference.rawValue)]
+            }
 
             DispatchQueue.main.async {
                 let eventVC = EKEventEditViewController()

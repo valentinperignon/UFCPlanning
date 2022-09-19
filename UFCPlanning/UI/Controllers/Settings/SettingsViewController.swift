@@ -5,6 +5,7 @@
 //  Created by Valentin Perignon on 12/09/2022.
 //
 
+import UFCPlanningCore
 import UIKit
 
 protocol SettingsPresenterDelegate {
@@ -56,24 +57,25 @@ class SettingsViewController: UITableViewController {
 
     private func getAboutCell(for indexPath: IndexPath) -> UITableViewCell {
         let row = viewModel.settings[indexPath.section].items[indexPath.row]
-        switch row {
-        case .homeworkAlerts:
-            let cell = tableView.dequeueReusableCell(withIdentifier: OptionCell.identifier, for: indexPath) as! OptionCell
-            cell.configure(with: row, value: "1 jour avant")
-            return cell
-        case .campusSport:
+        guard let userDefaultsKey = row.userDefaultsKey else { fatalError("No UserDefaults key provided") }
+
+        if row == .campusSport {
             let cell = tableView.dequeueReusableCell(withIdentifier: ToggleCell.identifier, for: indexPath) as! ToggleCell
-            cell.configure(with: row, defaultValue: UserDefaults.standard.bool(forKey: "campusSport")) { value in
-                UserDefaults.standard.set(value, forKey: "campusSport")
+            cell.configure(with: row, defaultValue: UserDefaults.standard.bool(forKey: userDefaultsKey)) { value in
+                UserDefaults.standard.set(value, forKey: userDefaultsKey)
             }
             return cell
-        case .visibility:
-            let cell = tableView.dequeueReusableCell(withIdentifier: OptionCell.identifier, for: indexPath) as! OptionCell
-            cell.configure(with: row, value: "60 jours")
-            return cell
-        default:
-            fatalError("Unhandled item")
         }
+
+        var value: any SettingsEnum
+        if row == .homeworkAlerts {
+            value = EventAlarm(rawValue: UserDefaults.standard.double(forKey: userDefaultsKey)) ?? EventAlarm.defaultValue
+        } else {
+            value = VisibilityDays(rawValue: UserDefaults.standard.integer(forKey: userDefaultsKey)) ?? VisibilityDays.defaultValue
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: OptionCell.identifier, for: indexPath) as! OptionCell
+        cell.configure(with: row, value: value.description)
+        return cell
     }
 
     private func didTapConnectionCell() {
@@ -115,6 +117,26 @@ class SettingsViewController: UITableViewController {
             }
         })
         alertVC.addAction(UIAlertAction(title: "Annuler", style: .cancel))
+        present(alertVC, animated: true)
+    }
+
+    private func didTap(option: SettingsRow) {
+        let alertVC = UIAlertController(title: option.name, message: nil, preferredStyle: .actionSheet)
+        alertVC.addAction(UIAlertAction(title: "Annuler", style: .cancel))
+
+        let availableOptions: [any SettingsEnum] = option == .visibility ? VisibilityDays.allCases : EventAlarm.allCases
+        for option in availableOptions {
+            alertVC.addAction(UIAlertAction(title: option.description, style: .default) { [weak self] _ in
+                guard let self = self else { return }
+                if let eventOption = option as? EventAlarm {
+                    UserDefaults.standard.set(eventOption.rawValue, forKey: "homeworkAlert")
+                } else if let visibilityOption = option as? VisibilityDays {
+                    UserDefaults.standard.set(visibilityOption.rawValue, forKey: "daysNumber")
+                }
+                self.tableView.reloadSections(IndexSet(integer: 2), with: .automatic)
+            })
+        }
+
         present(alertVC, animated: true)
     }
 }
@@ -162,6 +184,10 @@ extension SettingsViewController {
             } else {
                 didTapConnectionCell()
             }
+        case .about:
+            let option = section.items[indexPath.row]
+            guard option != .campusSport else { return }
+            didTap(option: option)
         default:
             break
         }

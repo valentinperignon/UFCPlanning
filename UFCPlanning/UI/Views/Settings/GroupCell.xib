@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="GroupCell" customModule="UFCPlanning" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8X-9W-V6f">
+                        <rect key="frame" x="16" y="11.666666666666664" width="97" height="21"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQP-UH-zXS">
+                        <rect key="frame" x="270" y="5" width="34" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="34" id="5Gb-yX-8bf"/>
+                            <constraint firstAttribute="height" constant="34" id="pqa-uS-jhl"/>
+                        </constraints>
+                        <color key="tintColor" systemColor="systemRedColor"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                        <connections>
+                            <action selector="didTapDeleteButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="e2I-3P-GVf"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSf-dm-w5Q">
+                        <rect key="frame" x="234" y="5" width="34" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="34" id="Bvb-kc-cJm"/>
+                            <constraint firstAttribute="height" constant="34" id="obs-U9-RjD"/>
+                        </constraints>
+                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" image="eye" catalog="system"/>
+                        <connections>
+                            <action selector="didTapHideButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FEe-u4-Yi1"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="r8X-9W-V6f" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="4MM-kb-rLe"/>
+                    <constraint firstItem="r8X-9W-V6f" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="GGd-F2-O2e"/>
+                    <constraint firstItem="MQP-UH-zXS" firstAttribute="centerY" secondItem="r8X-9W-V6f" secondAttribute="centerY" id="RNX-2u-IXV"/>
+                    <constraint firstItem="XSf-dm-w5Q" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="r8X-9W-V6f" secondAttribute="trailing" constant="8" id="YIZ-Qa-CI4"/>
+                    <constraint firstItem="XSf-dm-w5Q" firstAttribute="centerY" secondItem="r8X-9W-V6f" secondAttribute="centerY" id="iOC-uK-pvq"/>
+                    <constraint firstItem="MQP-UH-zXS" firstAttribute="leading" secondItem="XSf-dm-w5Q" secondAttribute="trailing" constant="2" id="ont-Xi-i0b"/>
+                    <constraint firstAttribute="trailing" secondItem="MQP-UH-zXS" secondAttribute="trailing" constant="16" id="v69-vd-WJb"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="label" destination="r8X-9W-V6f" id="YUW-oL-qO3"/>
+            </connections>
+            <point key="canvasLocation" x="135.38461538461539" y="20.616113744075829"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="eye" catalog="system" width="128" height="79"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

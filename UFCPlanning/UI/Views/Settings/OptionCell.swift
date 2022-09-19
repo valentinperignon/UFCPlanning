@@ -17,7 +17,7 @@ class OptionCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func configure(with item: SettingsItem, value: String) {
+    func configure(with item: SettingsRow, value: String) {
         label.text = item.name
         self.value.text = value
     }

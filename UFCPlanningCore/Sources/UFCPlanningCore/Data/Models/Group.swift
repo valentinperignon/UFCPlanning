@@ -18,11 +18,13 @@ public class Group: Object {
     @Persisted public var id: Int
     @Persisted public var name: String
     @Persisted public var type: GroupType
+    @Persisted public var isVisible: Bool
     
     public convenience init(id: Int, name: String, type: GroupType) {
         self.init()
         self.id = id
         self.name = name
         self.type = type
+        self.isVisible = true
     }
 }
