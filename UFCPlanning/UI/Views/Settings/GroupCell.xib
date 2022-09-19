@@ -25,7 +25,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQP-UH-zXS">
-                        <rect key="frame" x="270" y="5" width="34" height="34"/>
+                        <rect key="frame" x="274" y="5" width="34" height="34"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="34" id="5Gb-yX-8bf"/>
                             <constraint firstAttribute="height" constant="34" id="pqa-uS-jhl"/>
@@ -38,7 +38,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSf-dm-w5Q">
-                        <rect key="frame" x="234" y="5" width="34" height="34"/>
+                        <rect key="frame" x="236" y="5" width="34" height="34"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="34" id="Bvb-kc-cJm"/>
                             <constraint firstAttribute="height" constant="34" id="obs-U9-RjD"/>
@@ -57,8 +57,8 @@
                     <constraint firstItem="MQP-UH-zXS" firstAttribute="centerY" secondItem="r8X-9W-V6f" secondAttribute="centerY" id="RNX-2u-IXV"/>
                     <constraint firstItem="XSf-dm-w5Q" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="r8X-9W-V6f" secondAttribute="trailing" constant="8" id="YIZ-Qa-CI4"/>
                     <constraint firstItem="XSf-dm-w5Q" firstAttribute="centerY" secondItem="r8X-9W-V6f" secondAttribute="centerY" id="iOC-uK-pvq"/>
-                    <constraint firstItem="MQP-UH-zXS" firstAttribute="leading" secondItem="XSf-dm-w5Q" secondAttribute="trailing" constant="2" id="ont-Xi-i0b"/>
-                    <constraint firstAttribute="trailing" secondItem="MQP-UH-zXS" secondAttribute="trailing" constant="16" id="v69-vd-WJb"/>
+                    <constraint firstItem="MQP-UH-zXS" firstAttribute="leading" secondItem="XSf-dm-w5Q" secondAttribute="trailing" constant="4" id="ont-Xi-i0b"/>
+                    <constraint firstAttribute="trailing" secondItem="MQP-UH-zXS" secondAttribute="trailing" constant="12" id="v69-vd-WJb"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
