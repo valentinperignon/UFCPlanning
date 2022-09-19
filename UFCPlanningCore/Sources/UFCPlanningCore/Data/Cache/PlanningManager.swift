@@ -70,6 +70,17 @@ public class PlanningManager {
         self.user = user
     }
 
+    // MARK: - Groups
+
+    public func save(group: Group) {
+        let realm = getRealm()
+        guard realm.object(ofType: Group.self, forPrimaryKey: group.id) == nil else { return }
+
+        try? realm.write {
+            realm.add(group)
+        }
+    }
+
     // MARK: - Planning
 
     public func planning() async throws {

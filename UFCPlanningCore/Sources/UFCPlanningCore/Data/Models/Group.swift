@@ -10,15 +10,17 @@ import RealmSwift
 
 public enum GroupType: Int, PersistableEnum {
     case category = 1
-    case ancestorLink = 2
-    case final = 3
+    case final = 2
+    case ancestorLink = 3
 }
 
 public class Group: Object {
-    @Persisted public var id: Int
+    @Persisted(primaryKey: true) public var id: Int
     @Persisted public var name: String
     @Persisted public var type: GroupType
     @Persisted public var isVisible: Bool
+
+    public static let main = Group(id: 0, name: "Tous les groupes", type: .category)
     
     public convenience init(id: Int, name: String, type: GroupType) {
         self.init()

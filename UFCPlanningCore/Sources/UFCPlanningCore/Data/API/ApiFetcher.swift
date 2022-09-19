@@ -34,7 +34,7 @@ public class ApiFetcher {
     }
 
     public func groups(with id: Int) async throws -> [Group] {
-        let (data, _) = try await urlSession.data(endpoint: .groups(with: 0))
+        let (data, _) = try await urlSession.data(endpoint: .groups(with: id))
         
         guard let dataString = String(data: data, encoding: .isoLatin1) else {
             throw ApiError.cannotDecodeData

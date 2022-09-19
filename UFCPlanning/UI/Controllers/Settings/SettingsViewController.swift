@@ -188,6 +188,11 @@ extension SettingsViewController {
             let option = section.items[indexPath.row]
             guard option != .campusSport else { return }
             didTap(option: option)
+        case .plannings:
+            if section.items[indexPath.row] == .plannings {
+                let groupsViewController = GroupsViewController.instantiateInNavigationController()
+                present(groupsViewController, animated: true)
+            }
         default:
             break
         }

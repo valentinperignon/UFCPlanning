@@ -22,7 +22,7 @@ public class GroupsDecoder: Decoder {
         guard items.count >= 3,
               let id = Int(items[1]),
               let typeRawValue = Int(items[0]),
-              let type = GroupType(rawValue: typeRawValue)
+              let type =  GroupType(rawValue: typeRawValue)
         else { return nil }
         
         let name = String(items[2])
