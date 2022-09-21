@@ -117,6 +117,19 @@ public class PlanningManager {
         }
     }
 
+    public func fetchNextLessons() async throws -> [Lesson] {
+        let groups = loadGroups()
+        let settings = PlanningSettings(
+            numberOfDays: 4,
+            mode: .separatedByDate,
+            withColors: true,
+            withSports: true,
+            withExtra: true
+        )
+
+        return try await apiFetcher.planning(for: groups, with: settings)
+    }
+
     public func searchInPlanning(for text: String) -> Results<Lesson> {
         let realm = getRealm()
         let results =  realm.objects(Lesson.self).where { lesson in

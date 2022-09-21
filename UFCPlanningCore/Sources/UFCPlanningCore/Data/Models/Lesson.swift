@@ -15,7 +15,14 @@ public class Lesson: Object {
     @Persisted public var end: Date
     @Persisted public var about: String?
     @Persisted public var decimalColor: Int
-    
+
+    public var formattedStart: String {
+        start.formatted(.dateTime.hour().minute())
+    }
+    public var formattedEnd: String {
+        end.formatted(.dateTime.hour().minute())
+    }
+
     public var color: UIColor {
         UIColor(decimal: decimalColor)
     }

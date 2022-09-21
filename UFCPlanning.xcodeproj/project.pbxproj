@@ -17,6 +17,12 @@
 		A73A74ED28B19316007D28EE /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = A73A74EC28B19316007D28EE /* swiftgen.yml */; };
 		A73A74EF28B1933C007D28EE /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A74EE28B1933C007D28EE /* XCAssets+Generated.swift */; };
 		A757213628CDD9880079A40A /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = A757213528CDD9880079A40A /* SFSafeSymbols */; };
+		A77CC9F528DAF459004F5555 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A77CC9F428DAF459004F5555 /* WidgetKit.framework */; };
+		A77CC9F728DAF459004F5555 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A77CC9F628DAF459004F5555 /* SwiftUI.framework */; };
+		A77CC9FA28DAF459004F5555 /* LockScreenWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77CC9F928DAF459004F5555 /* LockScreenWidget.swift */; };
+		A77CC9FC28DAF45A004F5555 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A77CC9FB28DAF45A004F5555 /* Assets.xcassets */; };
+		A77CCA0028DAF45A004F5555 /* LockScreenWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A77CC9F328DAF459004F5555 /* LockScreenWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A77CCA0628DAF73C004F5555 /* UFCPlanningCore in Frameworks */ = {isa = PBXBuildFile; productRef = A77CCA0528DAF73C004F5555 /* UFCPlanningCore */; };
 		A780FDEB28D3C7750003B6A6 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780FDE928D3C7750003B6A6 /* ButtonCell.swift */; };
 		A780FDEC28D3C7750003B6A6 /* ButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A780FDEA28D3C7750003B6A6 /* ButtonCell.xib */; };
 		A780FDEF28D3C7AA0003B6A6 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780FDED28D3C7AA0003B6A6 /* UserCell.swift */; };
@@ -35,6 +41,30 @@
 		A7F6C82828CF9DAB00CDD3BF /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F6C82728CF9DAB00CDD3BF /* SettingsViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A77CC9FE28DAF45A004F5555 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A73A74C928B18CE4007D28EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A77CC9F228DAF459004F5555;
+			remoteInfo = LockScreenWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A77CCA0428DAF45A004F5555 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A77CCA0028DAF45A004F5555 /* LockScreenWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		A716D34A28D8B91800D0E4F8 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		A716D34C28D8B9BB00D0E4F8 /* GroupsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewModel.swift; sourceTree = "<group>"; };
@@ -50,6 +80,13 @@
 		A757213328CCE9EB0079A40A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A75959C128B80FE200F69607 /* UFCPlanningCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UFCPlanningCore; sourceTree = "<group>"; };
 		A77CC9EE28DAEEF4004F5555 /* UFCPlanning.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UFCPlanning.entitlements; sourceTree = "<group>"; };
+		A77CC9F328DAF459004F5555 /* LockScreenWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LockScreenWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A77CC9F428DAF459004F5555 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		A77CC9F628DAF459004F5555 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		A77CC9F928DAF459004F5555 /* LockScreenWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenWidget.swift; sourceTree = "<group>"; };
+		A77CC9FB28DAF45A004F5555 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A77CC9FD28DAF45A004F5555 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A77CCA0728DB00FF004F5555 /* LockScreenWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LockScreenWidgetExtension.entitlements; sourceTree = "<group>"; };
 		A780FDE928D3C7750003B6A6 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		A780FDEA28D3C7750003B6A6 /* ButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonCell.xib; sourceTree = "<group>"; };
 		A780FDED28D3C7AA0003B6A6 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
@@ -77,6 +114,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A77CC9F028DAF459004F5555 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A77CC9F728DAF459004F5555 /* SwiftUI.framework in Frameworks */,
+				A77CCA0628DAF73C004F5555 /* UFCPlanningCore in Frameworks */,
+				A77CC9F528DAF459004F5555 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -92,9 +139,11 @@
 		A73A74C828B18CE4007D28EE = {
 			isa = PBXGroup;
 			children = (
+				A77CCA0728DB00FF004F5555 /* LockScreenWidgetExtension.entitlements */,
 				A73A74EC28B19316007D28EE /* swiftgen.yml */,
 				A73A74D328B18CE4007D28EE /* UFCPlanning */,
 				A75959C128B80FE200F69607 /* UFCPlanningCore */,
+				A77CC9F828DAF459004F5555 /* LockScreenWidget */,
 				A73A74D228B18CE4007D28EE /* Products */,
 				A73A74F128B571C8007D28EE /* Frameworks */,
 			);
@@ -104,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				A73A74D128B18CE4007D28EE /* UFCPlanning.app */,
+				A77CC9F328DAF459004F5555 /* LockScreenWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -162,8 +212,20 @@
 		A73A74F128B571C8007D28EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A77CC9F428DAF459004F5555 /* WidgetKit.framework */,
+				A77CC9F628DAF459004F5555 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A77CC9F828DAF459004F5555 /* LockScreenWidget */ = {
+			isa = PBXGroup;
+			children = (
+				A77CC9F928DAF459004F5555 /* LockScreenWidget.swift */,
+				A77CC9FB28DAF45A004F5555 /* Assets.xcassets */,
+				A77CC9FD28DAF45A004F5555 /* Info.plist */,
+			);
+			path = LockScreenWidget;
 			sourceTree = "<group>";
 		};
 		A7A99E4A28C8ED9F0035D9C6 /* Home */ = {
@@ -220,10 +282,12 @@
 				A73A74CD28B18CE4007D28EE /* Sources */,
 				A73A74CE28B18CE4007D28EE /* Frameworks */,
 				A73A74CF28B18CE4007D28EE /* Resources */,
+				A77CCA0428DAF45A004F5555 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A77CC9FF28DAF45A004F5555 /* PBXTargetDependency */,
 			);
 			name = UFCPlanning;
 			packageProductDependencies = (
@@ -234,6 +298,26 @@
 			productReference = A73A74D128B18CE4007D28EE /* UFCPlanning.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A77CC9F228DAF459004F5555 /* LockScreenWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A77CCA0128DAF45A004F5555 /* Build configuration list for PBXNativeTarget "LockScreenWidgetExtension" */;
+			buildPhases = (
+				A77CC9EF28DAF459004F5555 /* Sources */,
+				A77CC9F028DAF459004F5555 /* Frameworks */,
+				A77CC9F128DAF459004F5555 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LockScreenWidgetExtension;
+			packageProductDependencies = (
+				A77CCA0528DAF73C004F5555 /* UFCPlanningCore */,
+			);
+			productName = LockScreenWidgetExtension;
+			productReference = A77CC9F328DAF459004F5555 /* LockScreenWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -241,11 +325,14 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					A73A74D028B18CE4007D28EE = {
 						CreatedOnToolsVersion = 13.4.1;
+					};
+					A77CC9F228DAF459004F5555 = {
+						CreatedOnToolsVersion = 14.0;
 					};
 				};
 			};
@@ -267,6 +354,7 @@
 			projectRoot = "";
 			targets = (
 				A73A74D028B18CE4007D28EE /* UFCPlanning */,
+				A77CC9F228DAF459004F5555 /* LockScreenWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -285,6 +373,14 @@
 				A78B6DCC28D07C84000C96E0 /* ToggleCell.xib in Resources */,
 				A73A74ED28B19316007D28EE /* swiftgen.yml in Resources */,
 				A780FDF028D3C7AA0003B6A6 /* UserCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A77CC9F128DAF459004F5555 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A77CC9FC28DAF45A004F5555 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,7 +409,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A77CC9EF28DAF459004F5555 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A77CC9FA28DAF459004F5555 /* LockScreenWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A77CC9FF28DAF45A004F5555 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A77CC9F228DAF459004F5555 /* LockScreenWidgetExtension */;
+			targetProxy = A77CC9FE28DAF45A004F5555 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A73A74DF28B18CE5007D28EE /* LaunchScreen.storyboard */ = {
@@ -447,6 +559,7 @@
 		A73A74E628B18CE5007D28EE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = UFCPlanning/UFCPlanning.entitlements;
@@ -466,7 +579,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.valentinperignon.UFCPlanning;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -481,6 +594,7 @@
 		A73A74E728B18CE5007D28EE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = UFCPlanning/UFCPlanning.entitlements;
@@ -500,7 +614,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.valentinperignon.UFCPlanning;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -509,6 +623,66 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		A77CCA0228DAF45A004F5555 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = LockScreenWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LYG6796H6N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LockScreenWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LockScreenWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.valentinperignon.UFCPlanning.LockScreenWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A77CCA0328DAF45A004F5555 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = LockScreenWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LYG6796H6N;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LockScreenWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LockScreenWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fr.valentinperignon.UFCPlanning.LockScreenWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -533,6 +707,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		A77CCA0128DAF45A004F5555 /* Build configuration list for PBXNativeTarget "LockScreenWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A77CCA0228DAF45A004F5555 /* Debug */,
+				A77CCA0328DAF45A004F5555 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -551,6 +734,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A757213428CDD9880079A40A /* XCRemoteSwiftPackageReference "SFSafeSymbols" */;
 			productName = SFSafeSymbols;
+		};
+		A77CCA0528DAF73C004F5555 /* UFCPlanningCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = UFCPlanningCore;
 		};
 		A7CFCA5F28B8112C00051426 /* UFCPlanningCore */ = {
 			isa = XCSwiftPackageProductDependency;

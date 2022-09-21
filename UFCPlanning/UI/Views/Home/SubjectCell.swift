@@ -26,6 +26,6 @@ class SubjectCell: UITableViewCell {
         
         name.text = subject.name
         about.text = subject.about
-        time.text = "\(subject.start.formatted(.dateTime.hour().minute())) - \(subject.end.formatted(.dateTime.hour().minute()))"
+        time.text = "\(subject.formattedStart) - \(subject.formattedEnd)"
     }
 }
