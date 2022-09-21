@@ -49,6 +49,7 @@
 		A73A74EE28B1933C007D28EE /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
 		A757213328CCE9EB0079A40A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A75959C128B80FE200F69607 /* UFCPlanningCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UFCPlanningCore; sourceTree = "<group>"; };
+		A77CC9EE28DAEEF4004F5555 /* UFCPlanning.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UFCPlanning.entitlements; sourceTree = "<group>"; };
 		A780FDE928D3C7750003B6A6 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		A780FDEA28D3C7750003B6A6 /* ButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonCell.xib; sourceTree = "<group>"; };
 		A780FDED28D3C7AA0003B6A6 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
@@ -110,6 +111,7 @@
 		A73A74D328B18CE4007D28EE /* UFCPlanning */ = {
 			isa = PBXGroup;
 			children = (
+				A77CC9EE28DAEEF4004F5555 /* UFCPlanning.entitlements */,
 				A73A74D428B18CE4007D28EE /* AppDelegate.swift */,
 				A73A74D628B18CE4007D28EE /* SceneDelegate.swift */,
 				A73A74E928B19095007D28EE /* UI */,
@@ -447,6 +449,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UFCPlanning/UFCPlanning.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LYG6796H6N;
@@ -480,6 +483,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UFCPlanning/UFCPlanning.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LYG6796H6N;

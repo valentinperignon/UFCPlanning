@@ -18,8 +18,14 @@ public class PlanningManager {
     private let realmConfiguration: Realm.Configuration
 
     private init() {
+        let realmDirectory = Constants.sharedGroupURL!.appendingPathComponent("plannings", isDirectory: true)
+        try? FileManager.default.createDirectory(atPath: realmDirectory.path, withIntermediateDirectories: true)
+
         apiFetcher = ApiFetcher()
-        realmConfiguration = Realm.Configuration(schemaVersion: 1)
+        realmConfiguration = Realm.Configuration(
+            fileURL: realmDirectory.appendingPathComponent("plannings.realm"),
+            schemaVersion: 1
+        )
         print("[UFCPlanning] Realm location: \(realmConfiguration.fileURL?.path ?? "")")
 
         try? getUser()
@@ -29,7 +35,7 @@ public class PlanningManager {
         do {
             return try Realm(configuration: realmConfiguration)
         } catch {
-            fatalError("Cannot get a Realm instance")
+            fatalError("Cannot get a Realm instance: \(error.localizedDescription)")
         }
     }
 
