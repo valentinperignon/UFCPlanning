@@ -20,40 +20,61 @@ struct Provider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        let emptyTimeline = Timeline(
-            entries: [NextLessonEntry(date: .now, lesson: nil)],
-            policy: .after(.now.addingTimeInterval(300)) // Refresh again in 5 minutes
-        )
-
         Task {
-            let lessons = try? await PlanningManager.shared.fetchNextLessons()
-            guard let lessons = lessons,
-                  let nextLesson = lessons.first
-            else {
-                completion(emptyTimeline)
-                return
-            }
+            do {
+                let lessons = try await PlanningManager.shared.fetchNextLessons()
+                guard let nextLesson = lessons.first else {
+                    completion(emptyTimeline(error: .emptyLesson))
+                    return
+                }
 
-            var lessonToDisplay: Lesson? = nextLesson
-            if nextLesson.end < .now.addingTimeInterval(Constants.refreshWidget) {
-                lessonToDisplay = lessons.count > 1 ? lessons[1] : nil
-            }
+                var lessonToDisplay: Lesson? = nextLesson
+                if nextLesson.end < .now.addingTimeInterval(Constants.refreshWidget) {
+                    lessonToDisplay = lessons.count > 1 ? lessons[1] : nil
+                }
 
-            if let lessonToDisplay = lessonToDisplay {
-                completion(Timeline(
-                    entries: [NextLessonEntry(date: .now, lesson: lessonToDisplay)],
-                    policy: .after(lessonToDisplay.end.addingTimeInterval(Constants.refreshWidget))
-                ))
-            } else {
-                completion(emptyTimeline)
+                if let lessonToDisplay = lessonToDisplay {
+                    var reloadAfter = lessonToDisplay.end.addingTimeInterval(Constants.refreshWidget)
+                    if !Calendar.current.isDateInToday(lessonToDisplay.start) {
+                        reloadAfter = Calendar.current.startOfDay(for: lessonToDisplay.start)
+                    }
+                    completion(Timeline(
+                        entries: [NextLessonEntry(date: .now, lesson: lessonToDisplay)],
+                        policy: .after(reloadAfter)
+                    ))
+                } else {
+                    completion(emptyTimeline(error: .emptyLesson))
+                }
+            } catch {
+                completion(emptyTimeline(error: .cannotFetchLessons))
             }
         }
+    }
+
+    private func emptyTimeline(error: WidgetError) -> Timeline<NextLessonEntry> {
+        return Timeline(
+            entries: [NextLessonEntry(error: error)],
+            policy: .after(.now.addingTimeInterval(error.timeToWaitToRefresh))
+        )
     }
 }
 
 struct NextLessonEntry: TimelineEntry {
     let date: Date
     let lesson: Lesson?
+    let error: WidgetError?
+
+    init(date: Date, lesson: Lesson?) {
+        self.date = date
+        self.lesson = lesson
+        self.error = nil
+    }
+
+    init(error: WidgetError) {
+        self.date = .now
+        self.lesson = nil
+        self.error = error
+    }
 }
 
 struct LockScreenWidgetEntryView : View {
@@ -63,8 +84,10 @@ struct LockScreenWidgetEntryView : View {
         HStack {
             if let lesson = entry.lesson {
                 nextLesson(lesson)
+            } else if let error = entry.error {
+                Text(error.description)
             } else {
-                Text("Aucun cours à venir")
+                Text("Erreur")
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -77,7 +100,7 @@ struct LockScreenWidgetEntryView : View {
                 .frame(maxHeight: .infinity)
 
             VStack(alignment: .leading) {
-                Text("\(lesson.formattedStart) - \(lesson.formattedEnd)")
+                Text(nextLessonDate(lesson: lesson))
                     .font(.caption)
                 Text(lesson.name)
                     .font(.headline)
@@ -86,6 +109,17 @@ struct LockScreenWidgetEntryView : View {
                 }
             }
         }
+    }
+
+    private func nextLessonDate(lesson: Lesson) -> String {
+        if Calendar.current.isDateInToday(lesson.start) {
+            return "\(lesson.formattedStart) - \(lesson.formattedEnd)"
+        }
+        if Calendar.current.isDateInTomorrow(lesson.start) {
+            return "Demain à \(lesson.formattedStart)"
+        }
+        return "\(lesson.start.formatted(.dateTime.day())) à \(lesson.formattedStart)"
+
     }
 }
 

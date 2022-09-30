@@ -15,7 +15,7 @@ public struct Constants {
     public static let widgetLessonPlaceholder = Lesson(
         name: "Anglais",
         start: .now,
-        end: .now.addingTimeInterval(3600),
+        end: .now.addingTimeInterval(4000),
         about: "Salle 42",
         decimalColor: 0
     )
