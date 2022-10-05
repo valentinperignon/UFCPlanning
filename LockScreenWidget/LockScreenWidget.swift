@@ -33,15 +33,23 @@ struct Provider: TimelineProvider {
                     lessonToDisplay = lessons.count > 1 ? lessons[1] : nil
                 }
 
-                if let lessonToDisplay = lessonToDisplay {
+                if let lessonToDisplay {
                     var reloadAfter = lessonToDisplay.end.addingTimeInterval(Constants.refreshWidget)
                     if !Calendar.current.isDateInToday(lessonToDisplay.start) {
-                        reloadAfter = Calendar.current.startOfDay(for: lessonToDisplay.start)
+                        if Calendar.current.isDateInTomorrow(lessonToDisplay.start) {
+                            reloadAfter = Calendar.current.startOfDay(for: lessonToDisplay.start)
+                        } else {
+                            let dayBefore = Calendar.current.date(byAdding: .day, value: -1, to: lessonToDisplay.start)
+                            reloadAfter = Calendar.current.startOfDay(for: dayBefore ?? lessonToDisplay.start)
+                        }
                     }
-                    completion(Timeline(
-                        entries: [NextLessonEntry(date: .now, lesson: lessonToDisplay)],
-                        policy: .after(reloadAfter)
-                    ))
+
+                    completion(
+                        Timeline(
+                            entries: [NextLessonEntry(date: .now, lesson: lessonToDisplay)],
+                            policy: .after(reloadAfter)
+                        )
+                    )
                 } else {
                     completion(emptyTimeline(error: .emptyLesson))
                 }
@@ -118,7 +126,7 @@ struct LockScreenWidgetEntryView : View {
         if Calendar.current.isDateInTomorrow(lesson.start) {
             return "Demain à \(lesson.formattedStart)"
         }
-        return "\(lesson.start.formatted(.dateTime.day())) à \(lesson.formattedStart)"
+        return "\(lesson.start.formatted(.dateTime.weekday(.wide)).capitalized) à \(lesson.formattedStart)"
 
     }
 }

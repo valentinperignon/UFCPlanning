@@ -20,5 +20,5 @@ public struct Constants {
         decimalColor: 0
     )
 
-    public static let refreshWidget: TimeInterval = -600 // 10 minutes before
+    public static let refreshWidget: TimeInterval = -1200 // 20 minutes before
 }

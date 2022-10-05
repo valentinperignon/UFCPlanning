@@ -17,7 +17,7 @@ public class Lesson: Object {
     @Persisted public var decimalColor: Int
 
     public var formattedStart: String {
-        start.formatted(.dateTime.hour().minute())
+        start.formatted(.dateTime.hour(.defaultDigits(amPM: .omitted)).minute())
     }
     public var formattedEnd: String {
         end.formatted(.dateTime.hour().minute())
