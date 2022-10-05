@@ -76,7 +76,7 @@ class DaySection {
         let fetchedLessons = AnyRealmCollection(realm.objects(Lesson.self).sorted(by: \.start))
 
         observationToken = fetchedLessons.observe { [weak self] changes in
-            guard let self = self else { return }
+            guard let self else { return }
             switch changes {
             case let .initial(lessons):
                 self.planning = self.splitLessonsIntoSections(lessons)
@@ -105,7 +105,7 @@ class DaySection {
 
             currentSection!.lessons.append(lesson)
         }
-        if let currentSection = currentSection {
+        if let currentSection {
             sections.append(currentSection)
         }
 

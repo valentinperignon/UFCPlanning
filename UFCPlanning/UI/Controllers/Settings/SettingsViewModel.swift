@@ -72,7 +72,7 @@ class SettingsViewModel {
         let fetchedGroups = realm.objects(Group.self)
 
         observationToken = fetchedGroups.observe { [weak self] changes in
-            guard let self = self else { return }
+            guard let self else { return }
             switch changes {
             case let .initial(groups):
                 self.groups = Array(groups)

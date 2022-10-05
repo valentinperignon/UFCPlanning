@@ -83,7 +83,7 @@ class HomeViewController: UITableViewController {
 
     private func addHomeworkToCalendar(for subject: Lesson, completion: @escaping (Bool) -> Void) {
         eventStore.requestAccess(to: .event) { [weak self] granted, error in
-            guard let self = self, error == nil && granted else {
+            guard let self, error == nil && granted else {
                 completion(false)
                 return
             }
@@ -144,7 +144,7 @@ extension HomeViewController {
 extension HomeViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .normal, title: "Ajouter au calendrier") { [weak self] _, _, completion in
-            guard let self = self else { return }
+            guard let self else { return }
             let subject = self.viewModel.getLesson(at: indexPath, filtered: self.isFiltering).freeze()
             self.addHomeworkToCalendar(for: subject, completion: completion)
         }

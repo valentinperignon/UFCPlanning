@@ -44,7 +44,7 @@ class SettingsViewController: UITableViewController {
 
     private func bindViewModel() {
         viewModel.updateList = { [weak self] deletions, insertions, modifications, shouldReload in
-            guard let self = self else { return }
+            guard let self else { return }
             if shouldReload {
                 self.tableView.reloadSections(IndexSet(integer: 1), with: .automatic)
             } else {
@@ -105,7 +105,7 @@ class SettingsViewController: UITableViewController {
             textField.isSecureTextEntry = true
         }
         alertVC.addAction(UIAlertAction(title: "Valider", style: .default) { [weak self] _ in
-            guard let self = self,
+            guard let self,
                   let login = alertVC.textFields?[0].text, let password = alertVC.textFields?[1].text else { return }
             Task {
                 do {
@@ -152,7 +152,7 @@ class SettingsViewController: UITableViewController {
         let availableOptions: [any SettingsEnum] = option == .visibility ? VisibilityDays.allCases : EventAlarm.allCases
         for option in availableOptions {
             alertVC.addAction(UIAlertAction(title: option.description, style: .default) { [weak self] _ in
-                guard let self = self else { return }
+                guard let self else { return }
                 if let eventOption = option as? EventAlarm {
                     UserDefaults.standard.set(eventOption.rawValue, forKey: "homeworkAlert")
                 } else if let visibilityOption = option as? VisibilityDays {
