@@ -16,6 +16,8 @@
 		A73A74E128B18CE5007D28EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A73A74DF28B18CE5007D28EE /* LaunchScreen.storyboard */; };
 		A73A74ED28B19316007D28EE /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = A73A74EC28B19316007D28EE /* swiftgen.yml */; };
 		A73A74EF28B1933C007D28EE /* XCAssets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A74EE28B1933C007D28EE /* XCAssets+Generated.swift */; };
+		A73B586028EF718B003AEB73 /* ARCarrotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73B585F28EF718B003AEB73 /* ARCarrotViewController.swift */; };
+		A73B586A28EF7BA6003AEB73 /* carrot.usdz in Resources */ = {isa = PBXBuildFile; fileRef = A73B586928EF7BA5003AEB73 /* carrot.usdz */; };
 		A757213628CDD9880079A40A /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = A757213528CDD9880079A40A /* SFSafeSymbols */; };
 		A7701B1128E7187C00E6420A /* WidgetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7701B1028E7187C00E6420A /* WidgetError.swift */; };
 		A7701B1228E719A300E6420A /* WidgetError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7701B1028E7187C00E6420A /* WidgetError.swift */; };
@@ -79,6 +81,8 @@
 		A73A74E228B18CE5007D28EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A73A74EC28B19316007D28EE /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		A73A74EE28B1933C007D28EE /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
+		A73B585F28EF718B003AEB73 /* ARCarrotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCarrotViewController.swift; sourceTree = "<group>"; };
+		A73B586928EF7BA5003AEB73 /* carrot.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = carrot.usdz; sourceTree = "<group>"; };
 		A757213328CCE9EB0079A40A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A75959C128B80FE200F69607 /* UFCPlanningCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UFCPlanningCore; sourceTree = "<group>"; };
 		A7701B1028E7187C00E6420A /* WidgetError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetError.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 		A73A74E828B1907E007D28EE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A73B586928EF7BA5003AEB73 /* carrot.usdz */,
 				A73A74DD28B18CE5007D28EE /* Assets.xcassets */,
 				A73A74E228B18CE5007D28EE /* Info.plist */,
 				A73A74DF28B18CE5007D28EE /* LaunchScreen.storyboard */,
@@ -199,6 +204,7 @@
 				A7A99E4A28C8ED9F0035D9C6 /* Home */,
 				A7F6C82428CF95AB00CDD3BF /* Settings */,
 				A716D34928D8B8CD00D0E4F8 /* Groups */,
+				A73B585E28EF7160003AEB73 /* ARCarrot */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -219,6 +225,14 @@
 				A77CC9F628DAF459004F5555 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A73B585E28EF7160003AEB73 /* ARCarrot */ = {
+			isa = PBXGroup;
+			children = (
+				A73B585F28EF718B003AEB73 /* ARCarrotViewController.swift */,
+			);
+			path = ARCarrot;
 			sourceTree = "<group>";
 		};
 		A77CC9F828DAF459004F5555 /* LockScreenWidget */ = {
@@ -376,6 +390,7 @@
 				A780FDEC28D3C7750003B6A6 /* ButtonCell.xib in Resources */,
 				A78B6DCC28D07C84000C96E0 /* ToggleCell.xib in Resources */,
 				A73A74ED28B19316007D28EE /* swiftgen.yml in Resources */,
+				A73B586A28EF7BA6003AEB73 /* carrot.usdz in Resources */,
 				A780FDF028D3C7AA0003B6A6 /* UserCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,6 +418,7 @@
 				A7F6C82628CF95CE00CDD3BF /* SettingsViewController.swift in Sources */,
 				A716D34D28D8B9BB00D0E4F8 /* GroupsViewModel.swift in Sources */,
 				A73A74D528B18CE4007D28EE /* AppDelegate.swift in Sources */,
+				A73B586028EF718B003AEB73 /* ARCarrotViewController.swift in Sources */,
 				A73A74D728B18CE4007D28EE /* SceneDelegate.swift in Sources */,
 				A780FDFD28D5FE030003B6A6 /* GroupCell.swift in Sources */,
 				A7701B1128E7187C00E6420A /* WidgetError.swift in Sources */,

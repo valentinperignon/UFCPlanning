@@ -5,6 +5,7 @@
 //  Created by Valentin Perignon on 20/08/2022.
 //
 
+import ARKit
 import EventKitUI
 import RealmSwift
 import SFSafeSymbols
@@ -42,12 +43,22 @@ class HomeViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
 
         let settingsButton = UIBarButtonItem(
-            image: UIImage(systemSymbol: SFSymbol.switch2),
+            image: UIImage(systemSymbol: .ellipsis),
             style: .plain,
             target: self,
             action: #selector(presentSettingsViewController)
         )
         navigationItem.rightBarButtonItem = settingsButton
+
+        if ARWorldTrackingConfiguration.isSupported {
+            let arKitButton = UIBarButtonItem(
+                image: UIImage(systemSymbol: .arkit),
+                style: .plain,
+                target: self,
+                action: #selector(makeFunWithARKit)
+            )
+            navigationItem.leftBarButtonItem = arKitButton
+        }
     }
 
     private func configureSearchBar() {
@@ -108,6 +119,11 @@ class HomeViewController: UITableViewController {
                 completion(true)
             }
         }
+    }
+
+    @objc private func makeFunWithARKit() {
+        let ARCarrotController = ARCarrotViewController.instantiateInNavigationController()
+        present(ARCarrotController, animated: true)
     }
 }
 
