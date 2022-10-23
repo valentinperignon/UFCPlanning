@@ -24,15 +24,15 @@ public enum EventAlarm: TimeInterval, SettingsEnum {
     public var description: String {
         switch self {
         case .noAlarm:
-            return "Aucune alarme"
+            return NSLocalizedString("eventalarm_no", comment: "")
         case .oneHourBefore:
-            return "1 heure avant"
+            return NSLocalizedString("eventalarm_onehour", comment: "")
         case .twoHoursBefore:
-            return "2 heures avant"
+            return NSLocalizedString("eventalarm_twohours", comment: "")
         case .oneDayBefore:
-            return "1 jour avant"
+            return NSLocalizedString("eventalarm_oneday", comment: "")
         case .twoDaysBefore:
-            return "2 jours avant"
+            return NSLocalizedString("eventalarm_twodays", comment: "")
         }
     }
 }

@@ -20,7 +20,7 @@ public class Group: Object {
     @Persisted public var type: GroupType
     @Persisted public var isVisible: Bool
 
-    public static let main = Group(id: 0, name: "Tous les groupes", type: .category)
+    public static let main = Group(id: 0, name: NSLocalizedString("settings.groups.title", comment: ""), type: .category)
     
     public convenience init(id: Int, name: String, type: GroupType) {
         self.init()

@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  UFCPlanning
+
+  Created by Valentin Perignon on 23/10/2022.
+*/
+
+"settings.title" = "Paramètres";
+
+"settings.row.login" = "Se connecter";
+"settings.row.addGroup" = "Ajouter un groupe";
+"settings.row.numberOfDays" = "Jours à afficher";
+"settings.row.campus" = "Activités Campus Sport";
+"settings.row.homework" = "Alerte pour les devoirs";
+"settings.login.title" = "Se connecter";
+"settings.login.login" = "Identifiant";
+"settings.login.password" = "Mot de passe";
+
+"settings.options.visibilityDays.oneWeek" = "1 semaine";
+"settings.options.visibilityDays.twoWeeks" = "2 semaines";
+"settings.options.visibilityDays.oneMonth" = "1 mois";
+"settings.options.visibilityDays.twoMonths" = "2 mois";
+
+"settings.options.eventAlarm.no" = "Aucune alarme";
+"settings.options.eventAlarm.oneHour" = "1 heure avant";
+"settings.options.eventAlarm.twoHours" = "2 heures avant";
+"settings.options.eventAlarm.oneDay" = "1 jour avant";
+"settings.options.eventAlarm.twoDays" = "2 jours avant";
+
+"settings.groups.title" = "Tous les groupes";
+
+"action.button.cancel" = "Annuler";
+"action.button.ok" = "Valider";
