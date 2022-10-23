@@ -174,7 +174,6 @@
 				A73A74D628B18CE4007D28EE /* SceneDelegate.swift */,
 				A73A74E928B19095007D28EE /* UI */,
 				A73A74E828B1907E007D28EE /* Resources */,
-				A768E5562905E445009E45FD /* Localizable.strings */,
 			);
 			path = UFCPlanning;
 			sourceTree = "<group>";
@@ -182,6 +181,7 @@
 		A73A74E828B1907E007D28EE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A768E5562905E445009E45FD /* Localizable.strings */,
 				A73A74DD28B18CE5007D28EE /* Assets.xcassets */,
 				A73A74E228B18CE5007D28EE /* Info.plist */,
 				A768E5582905EF81009E45FD /* Strings.swift */,

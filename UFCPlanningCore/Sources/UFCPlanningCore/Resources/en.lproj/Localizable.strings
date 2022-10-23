@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  
+
+  Created by Valentin Perignon on 24/10/2022.
+*/
+
+// Visibility Days
+
+"visibilityDays.oneWeek" = "1 week";
+"visibilityDays.twoWeeks" = "2 weeks";
+"visibilityDays.oneMonth" = "1 month";
+"visibilityDays.twoMonths" = "2 months";
+
+// Event Alarm
+
+"eventAlarm.no" = "No alarm";
+"eventAlarm.oneHour" = "1 hour before";
+"eventAlarm.twoHours" = "2 hours before";
+"eventAlarm.oneDay" = "1 day before";
+"eventAlarm.twoDays" = "2 days before";

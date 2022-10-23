@@ -36,30 +36,6 @@ internal enum L10n {
       /// Log in
       internal static let title = L10n.tr("Localizable", "settings.login.title", fallback: "Log in")
     }
-    internal enum Options {
-      internal enum EventAlarm {
-        /// No alarm
-        internal static let no = L10n.tr("Localizable", "settings.options.eventAlarm.no", fallback: "No alarm")
-        /// 1 day before
-        internal static let oneDay = L10n.tr("Localizable", "settings.options.eventAlarm.oneDay", fallback: "1 day before")
-        /// 1 hour before
-        internal static let oneHour = L10n.tr("Localizable", "settings.options.eventAlarm.oneHour", fallback: "1 hour before")
-        /// 2 days before
-        internal static let twoDays = L10n.tr("Localizable", "settings.options.eventAlarm.twoDays", fallback: "2 days before")
-        /// 2 hours before
-        internal static let twoHours = L10n.tr("Localizable", "settings.options.eventAlarm.twoHours", fallback: "2 hours before")
-      }
-      internal enum VisibilityDays {
-        /// 1 month
-        internal static let oneMonth = L10n.tr("Localizable", "settings.options.visibilityDays.oneMonth", fallback: "1 month")
-        /// 1 week
-        internal static let oneWeek = L10n.tr("Localizable", "settings.options.visibilityDays.oneWeek", fallback: "1 week")
-        /// 2 months
-        internal static let twoMonths = L10n.tr("Localizable", "settings.options.visibilityDays.twoMonths", fallback: "2 months")
-        /// 2 weeks
-        internal static let twoWeeks = L10n.tr("Localizable", "settings.options.visibilityDays.twoWeeks", fallback: "2 weeks")
-      }
-    }
     internal enum Row {
       /// Add a group
       internal static let addGroup = L10n.tr("Localizable", "settings.row.addGroup", fallback: "Add a group")

@@ -9,7 +9,7 @@ xcassets:
           output: Resources/XCAssets+Generated.swift
 
 strings:
-    inputs: en.lproj
+    inputs: Resources/en.lproj
     outputs:
         templateName: structured-swift5
         output: Resources/Strings.swift

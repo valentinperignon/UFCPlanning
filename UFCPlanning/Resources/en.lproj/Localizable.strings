@@ -18,17 +18,6 @@
 "settings.login.login" = "Login";
 "settings.login.password" = "Password";
 
-"settings.options.visibilityDays.oneWeek" = "1 week";
-"settings.options.visibilityDays.twoWeeks" = "2 weeks";
-"settings.options.visibilityDays.oneMonth" = "1 month";
-"settings.options.visibilityDays.twoMonths" = "2 months";
-
-"settings.options.eventAlarm.no" = "No alarm";
-"settings.options.eventAlarm.oneHour" = "1 hour before";
-"settings.options.eventAlarm.twoHours" = "2 hours before";
-"settings.options.eventAlarm.oneDay" = "1 day before";
-"settings.options.eventAlarm.twoDays" = "2 days before";
-
 "settings.groups.title" = "All groups";
 
 // Action

@@ -18,13 +18,13 @@ public enum VisibilityDays: Int, SettingsEnum {
     public var description: String {
         switch self {
         case .oneWeek:
-            return NSLocalizedString("settings.options.visibilityDays.oneWeek", comment: "")
+            return NSLocalizedString("visibilityDays.oneWeek", bundle: .module, comment: "")
         case .twoWeeks:
-            return NSLocalizedString("settings.options.visibilityDays.twoWeeks", comment: "")
+            return NSLocalizedString("visibilityDays.twoWeeks", bundle: .module, comment: "")
         case .oneMonth:
-            return NSLocalizedString("settings.options.visibilityDays.oneMonth", comment: "")
+            return NSLocalizedString("visibilityDays.oneMonth", bundle: .module, comment: "")
         case .twoMonths:
-            return NSLocalizedString("settings.options.visibilityDays.twoMonths", comment: "")
+            return NSLocalizedString("visibilityDays.twoMonths", bundle: .module, comment: "")
         }
     }
 }
