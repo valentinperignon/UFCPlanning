@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A71549152907282100E0F71B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A71549172907282100E0F71B /* InfoPlist.strings */; };
 		A716D34B28D8B91800D0E4F8 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A716D34A28D8B91800D0E4F8 /* GroupsViewController.swift */; };
 		A716D34D28D8B9BB00D0E4F8 /* GroupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A716D34C28D8B9BB00D0E4F8 /* GroupsViewModel.swift */; };
 		A73A74D528B18CE4007D28EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73A74D428B18CE4007D28EE /* AppDelegate.swift */; };
@@ -70,6 +71,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A71549162907282100E0F71B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A71549182907282400E0F71B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A716D34A28D8B91800D0E4F8 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		A716D34C28D8B9BB00D0E4F8 /* GroupsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewModel.swift; sourceTree = "<group>"; };
 		A73A74D128B18CE4007D28EE /* UFCPlanning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UFCPlanning.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,7 +84,6 @@
 		A73A74E228B18CE5007D28EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A73A74EC28B19316007D28EE /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		A73A74EE28B1933C007D28EE /* XCAssets+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCAssets+Generated.swift"; sourceTree = "<group>"; };
-		A757213328CCE9EB0079A40A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A75959C128B80FE200F69607 /* UFCPlanningCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = UFCPlanningCore; sourceTree = "<group>"; };
 		A768E5552905E445009E45FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A768E5572905E447009E45FD /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -181,12 +183,13 @@
 		A73A74E828B1907E007D28EE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A768E5562905E445009E45FD /* Localizable.strings */,
-				A768E55A29068C13009E45FD /* L10n.swift */,
 				A73A74DD28B18CE5007D28EE /* Assets.xcassets */,
-				A73A74E228B18CE5007D28EE /* Info.plist */,
 				A73A74DF28B18CE5007D28EE /* LaunchScreen.storyboard */,
+				A768E5562905E445009E45FD /* Localizable.strings */,
+				A71549172907282100E0F71B /* InfoPlist.strings */,
+				A768E55A29068C13009E45FD /* L10n.swift */,
 				A73A74EE28B1933C007D28EE /* XCAssets+Generated.swift */,
+				A73A74E228B18CE5007D28EE /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				A780FDEC28D3C7750003B6A6 /* ButtonCell.xib in Resources */,
 				A78B6DCC28D07C84000C96E0 /* ToggleCell.xib in Resources */,
 				A73A74ED28B19316007D28EE /* swiftgen.yml in Resources */,
+				A71549152907282100E0F71B /* InfoPlist.strings in Resources */,
 				A780FDF028D3C7AA0003B6A6 /* UserCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,11 +447,19 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A71549172907282100E0F71B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A71549162907282100E0F71B /* en */,
+				A71549182907282400E0F71B /* fr */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		A73A74DF28B18CE5007D28EE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A73A74E028B18CE5007D28EE /* Base */,
-				A757213328CCE9EB0079A40A /* fr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

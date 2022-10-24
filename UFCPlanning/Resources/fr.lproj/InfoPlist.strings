@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.strings
+  UFCPlanning
+
+  Created by Valentin Perignon on 24/10/2022.
+*/
+
+"NSCalendarsUsageDescription" = "Nous avons besoin de l'accès à votre agenda pour que vous puissiez enregistrer vos devoirs.";
