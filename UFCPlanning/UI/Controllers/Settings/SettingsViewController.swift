@@ -20,7 +20,7 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = L10n.Settings.title
+        title = L10n.Localizable.Settings.title
 
         tableView.register(UINib(nibName: UserCell.identifier, bundle: nil), forCellReuseIdentifier: UserCell.identifier)
         tableView.register(UINib(nibName: GroupCell.identifier, bundle: nil), forCellReuseIdentifier: GroupCell.identifier)
@@ -96,15 +96,15 @@ class SettingsViewController: UITableViewController {
     }
 
     private func didTapConnectionCell() {
-        let alertVC = UIAlertController(title: L10n.Settings.Login.title, message: nil, preferredStyle: .alert)
+        let alertVC = UIAlertController(title: L10n.Localizable.Settings.Login.title, message: nil, preferredStyle: .alert)
         alertVC.addTextField { textField in
-            textField.placeholder = L10n.Settings.Login.login
+            textField.placeholder = L10n.Localizable.Settings.Login.login
         }
         alertVC.addTextField { textField in
-            textField.placeholder = L10n.Settings.Login.password
+            textField.placeholder = L10n.Localizable.Settings.Login.password
             textField.isSecureTextEntry = true
         }
-        alertVC.addAction(UIAlertAction(title: L10n.Action.Button.confirm, style: .default) { [weak self] _ in
+        alertVC.addAction(UIAlertAction(title: L10n.Localizable.Action.Button.confirm, style: .default) { [weak self] _ in
             guard let self,
                   let login = alertVC.textFields?[0].text, let password = alertVC.textFields?[1].text else { return }
             Task {
@@ -113,26 +113,26 @@ class SettingsViewController: UITableViewController {
                     self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
                 } catch ApiError.wrongLoginOrPassword {
                     let errorVC = UIAlertController(
-                        title: L10n.Settings.Login.Error.title,
-                        message: L10n.Settings.Login.Error.message,
+                        title: L10n.Localizable.Settings.Login.Error.title,
+                        message: L10n.Localizable.Settings.Login.Error.message,
                         preferredStyle: .alert
                     )
-                    errorVC.addAction(UIAlertAction(title: L10n.Action.Button.ok, style: .default))
+                    errorVC.addAction(UIAlertAction(title: L10n.Localizable.Action.Button.ok, style: .default))
                     self.present(errorVC, animated: true)
                 } catch {
                     print("Error while logging in user: \(error.localizedDescription)")
                 }
             }
         })
-        alertVC.addAction(UIAlertAction(title: L10n.Action.Button.cancel, style: .cancel))
+        alertVC.addAction(UIAlertAction(title: L10n.Localizable.Action.Button.cancel, style: .cancel))
         present(alertVC, animated: true)
     }
 
     private func didTapDisconnectionCell() {
-        let alertVC = UIAlertController(title: L10n.Settings.Account.title,
-                                        message: L10n.Settings.Account.message,
+        let alertVC = UIAlertController(title: L10n.Localizable.Settings.Account.title,
+                                        message: L10n.Localizable.Settings.Account.message,
                                         preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: L10n.Settings.Account.button, style: .destructive) { [weak self] _ in
+        alertVC.addAction(UIAlertAction(title: L10n.Localizable.Settings.Account.button, style: .destructive) { [weak self] _ in
             guard let self = self else { return }
             do {
                 try self.viewModel.disconnectUser()
@@ -141,13 +141,13 @@ class SettingsViewController: UITableViewController {
                 print("Error while disconnecting user")
             }
         })
-        alertVC.addAction(UIAlertAction(title: L10n.Action.Button.cancel, style: .cancel))
+        alertVC.addAction(UIAlertAction(title: L10n.Localizable.Action.Button.cancel, style: .cancel))
         present(alertVC, animated: true)
     }
 
     private func didTap(option: SettingsRow) {
         let alertVC = UIAlertController(title: option.name, message: nil, preferredStyle: .actionSheet)
-        alertVC.addAction(UIAlertAction(title: L10n.Action.Button.cancel, style: .cancel))
+        alertVC.addAction(UIAlertAction(title: L10n.Localizable.Action.Button.cancel, style: .cancel))
 
         let availableOptions: [any SettingsEnum] = option == .visibility ? VisibilityDays.allCases : EventAlarm.allCases
         for option in availableOptions {

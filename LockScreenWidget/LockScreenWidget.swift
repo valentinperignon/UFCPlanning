@@ -95,7 +95,7 @@ struct LockScreenWidgetEntryView : View {
             } else if let error = entry.error {
                 Text(error.description)
             } else {
-                Text("Erreur")
+                Text(L10n.Localizable.Widget.Error.general)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -124,9 +124,9 @@ struct LockScreenWidgetEntryView : View {
             return "\(lesson.formattedStart) - \(lesson.formattedEnd)"
         }
         if Calendar.current.isDateInTomorrow(lesson.start) {
-            return "Demain à \(lesson.formattedStart)"
+            return L10n.Localizable.Widget.tomorrow(lesson.formattedStart)
         }
-        return "\(lesson.start.formatted(.dateTime.weekday(.wide)).capitalized) à \(lesson.formattedStart)"
+        return "\(lesson.start.formatted(.dateTime.weekday(.wide).hour(.defaultDigits(amPM: .abbreviated)).minute()).capitalized)"
 
     }
 }
@@ -139,8 +139,8 @@ struct LockScreenWidget: Widget {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             LockScreenWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Mon prochain cours")
-        .description("Afficher le prochain cours.")
+        .configurationDisplayName(L10n.Localizable.Widget.title)
+        .description(L10n.Localizable.Widget.description)
         .supportedFamilies([.accessoryRectangular])
     }
 }

@@ -23,9 +23,9 @@ enum WidgetError: Error {
     var description: String {
         switch self {
         case .cannotFetchLessons:
-            return "Erreur réseau"
+            return L10n.Localizable.Widget.Error.network
         case .emptyLesson:
-            return "Aucun cours à venir"
+            return L10n.Localizable.Widget.Error.empty
         }
     }
 }

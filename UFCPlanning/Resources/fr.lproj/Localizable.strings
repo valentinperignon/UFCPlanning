@@ -37,3 +37,14 @@
 "action.button.cancel" = "Annuler";
 "action.button.confirm" = "Valider";
 "action.button.ok" = "Ok";
+
+// Widget
+
+"widget.title" = "Mon Prochain Cours";
+"widget.description" = "Afficher mon prochain cours.";
+
+"widget.tomorrow" = "Demain à %@";
+
+"widget.error.general" = "Erreur";
+"widget.error.network" = "Erreur réseau";
+"widget.error.empty" = "Aucun cours à venir";

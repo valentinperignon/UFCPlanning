@@ -14,8 +14,8 @@ public struct Constants {
 
     public static let widgetLessonPlaceholder = Lesson(
         name: "Anglais",
-        start: .now,
-        end: .now.addingTimeInterval(4000),
+        start: Calendar.current.date(byAdding: .day, value: 1, to: .now)!,
+        end: Calendar.current.date(byAdding: .day, value: 1, to: .now.addingTimeInterval(4000))!,
         about: "Salle 42",
         decimalColor: 0
     )

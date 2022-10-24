@@ -27,7 +27,7 @@ class HomeViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = L10n.Home.title
+        title = L10n.Localizable.Home.title
 
         tableView.register(UINib(nibName: SubjectCell.identifier, bundle: nil), forCellReuseIdentifier: SubjectCell.identifier)
         tableView.allowsSelection = false
@@ -54,7 +54,7 @@ class HomeViewController: UITableViewController {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = L10n.Home.search
+        searchController.searchBar.placeholder = L10n.Localizable.Home.search
         navigationItem.searchController = searchController
         definesPresentationContext = true
     }

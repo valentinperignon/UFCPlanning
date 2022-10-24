@@ -37,3 +37,14 @@
 "action.button.cancel" = "Cancel";
 "action.button.confirm" = "Ok";
 "action.button.ok" = "Ok";
+
+// Widget
+
+"widget.title" = "My Next Class";
+"widget.description" = "Display my next class.";
+
+"widget.tomorrow" = "Tomorrow at %@";
+
+"widget.error.general" = "Error";
+"widget.error.network" = "Network error";
+"widget.error.empty" = "No upcoming classes";

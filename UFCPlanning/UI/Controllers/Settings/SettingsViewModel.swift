@@ -30,13 +30,13 @@ struct SettingsRow: Equatable {
     let name: String
     let userDefaultsKey: String?
 
-    static let account = SettingsRow(id: 0, icon: .personCropCircle, name: L10n.Settings.Row.login)
+    static let account = SettingsRow(id: 0, icon: .personCropCircle, name: L10n.Localizable.Settings.Row.login)
 
-    static let plannings = SettingsRow(id: 1, icon: .calendar, name: L10n.Settings.Row.addGroup)
+    static let plannings = SettingsRow(id: 1, icon: .calendar, name: L10n.Localizable.Settings.Row.addGroup)
 
-    static let visibility = SettingsRow(id: 2, icon: .eyes, name: L10n.Settings.Row.numberOfDays, userDefaultsKey: "daysNumber")
-    static let campusSport = SettingsRow(id: 3, icon: .figureWalk, name: L10n.Settings.Row.campus, userDefaultsKey: "campusSport")
-    static let homeworkAlerts = SettingsRow(id: 4, icon: .bell, name: L10n.Settings.Row.homework, userDefaultsKey: "homeworkAlert")
+    static let visibility = SettingsRow(id: 2, icon: .eyes, name: L10n.Localizable.Settings.Row.numberOfDays, userDefaultsKey: "daysNumber")
+    static let campusSport = SettingsRow(id: 3, icon: .figureWalk, name: L10n.Localizable.Settings.Row.campus, userDefaultsKey: "campusSport")
+    static let homeworkAlerts = SettingsRow(id: 4, icon: .bell, name: L10n.Localizable.Settings.Row.homework, userDefaultsKey: "homeworkAlert")
 
     init(id: Int, icon: SFSymbol, name: String, userDefaultsKey: String? = nil) {
         self.id = id
