@@ -5,6 +5,11 @@
   Created by Valentin Perignon on 23/10/2022.
 */
 
+// Home
+
+"home.title" = "Schedule";
+"home.search" = "Search";
+
 // Settings
 
 "settings.title" = "Settings";
@@ -14,13 +19,21 @@
 "settings.row.numberOfDays" = "Number of days to display";
 "settings.row.campus" = "Campus Sport Activities";
 "settings.row.homework" = "Homework alerts";
+
 "settings.login.title" = "Log in";
 "settings.login.login" = "Login";
 "settings.login.password" = "Password";
+"settings.login.error.title" = "Error";
+"settings.login.error.message" = "Wrong login or password";
+
+"settings.account.title" = "My Account";
+"settings.account.message" = "Do you want to log out?";
+"settings.account.button" = "Log out";
 
 "settings.groups.title" = "All groups";
 
 // Action
 
 "action.button.cancel" = "Cancel";
+"action.button.confirm" = "Ok";
 "action.button.ok" = "Ok";

@@ -12,4 +12,4 @@ strings:
     inputs: Resources/en.lproj
     outputs:
         templateName: structured-swift5
-        output: Resources/Strings.swift
+        output: Resources/L10n.swift

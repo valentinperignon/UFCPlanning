@@ -104,7 +104,7 @@ class SettingsViewController: UITableViewController {
             textField.placeholder = L10n.Settings.Login.password
             textField.isSecureTextEntry = true
         }
-        alertVC.addAction(UIAlertAction(title: L10n.Action.Button.ok, style: .default) { [weak self] _ in
+        alertVC.addAction(UIAlertAction(title: L10n.Action.Button.confirm, style: .default) { [weak self] _ in
             guard let self,
                   let login = alertVC.textFields?[0].text, let password = alertVC.textFields?[1].text else { return }
             Task {
@@ -113,11 +113,11 @@ class SettingsViewController: UITableViewController {
                     self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
                 } catch ApiError.wrongLoginOrPassword {
                     let errorVC = UIAlertController(
-                        title: "Erreur",
-                        message: "Mauvais identifiant ou mot de passe",
+                        title: L10n.Settings.Login.Error.title,
+                        message: L10n.Settings.Login.Error.message,
                         preferredStyle: .alert
                     )
-                    errorVC.addAction(UIAlertAction(title: "Ok", style: .default))
+                    errorVC.addAction(UIAlertAction(title: L10n.Action.Button.ok, style: .default))
                     self.present(errorVC, animated: true)
                 } catch {
                     print("Error while logging in user: \(error.localizedDescription)")
@@ -129,10 +129,10 @@ class SettingsViewController: UITableViewController {
     }
 
     private func didTapDisconnectionCell() {
-        let alertVC = UIAlertController(title: "Mon compte",
-                                        message: "Voulez-vous vraiment vous déconnecter ?",
+        let alertVC = UIAlertController(title: L10n.Settings.Account.title,
+                                        message: L10n.Settings.Account.message,
                                         preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "Se déconnecter", style: .destructive) { [weak self] _ in
+        alertVC.addAction(UIAlertAction(title: L10n.Settings.Account.button, style: .destructive) { [weak self] _ in
             guard let self = self else { return }
             do {
                 try self.viewModel.disconnectUser()

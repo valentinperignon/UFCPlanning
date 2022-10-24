@@ -15,15 +15,31 @@ internal enum L10n {
       /// Cancel
       internal static let cancel = L10n.tr("Localizable", "action.button.cancel", fallback: "Cancel")
       /// Ok
+      internal static let confirm = L10n.tr("Localizable", "action.button.confirm", fallback: "Ok")
+      /// Ok
       internal static let ok = L10n.tr("Localizable", "action.button.ok", fallback: "Ok")
     }
   }
-  internal enum Settings {
+  internal enum Home {
+    /// Search
+    internal static let search = L10n.tr("Localizable", "home.search", fallback: "Search")
     /// Localizable.strings
     ///   UFCPlanning
     /// 
     ///   Created by Valentin Perignon on 23/10/2022.
+    internal static let title = L10n.tr("Localizable", "home.title", fallback: "Schedule")
+  }
+  internal enum Settings {
+    /// Settings
     internal static let title = L10n.tr("Localizable", "settings.title", fallback: "Settings")
+    internal enum Account {
+      /// Log out
+      internal static let button = L10n.tr("Localizable", "settings.account.button", fallback: "Log out")
+      /// Do you want to log out?
+      internal static let message = L10n.tr("Localizable", "settings.account.message", fallback: "Do you want to log out?")
+      /// My Account
+      internal static let title = L10n.tr("Localizable", "settings.account.title", fallback: "My Account")
+    }
     internal enum Groups {
       /// All groups
       internal static let title = L10n.tr("Localizable", "settings.groups.title", fallback: "All groups")
@@ -35,6 +51,12 @@ internal enum L10n {
       internal static let password = L10n.tr("Localizable", "settings.login.password", fallback: "Password")
       /// Log in
       internal static let title = L10n.tr("Localizable", "settings.login.title", fallback: "Log in")
+      internal enum Error {
+        /// Wrong login or password
+        internal static let message = L10n.tr("Localizable", "settings.login.error.message", fallback: "Wrong login or password")
+        /// Error
+        internal static let title = L10n.tr("Localizable", "settings.login.error.title", fallback: "Error")
+      }
     }
     internal enum Row {
       /// Add a group

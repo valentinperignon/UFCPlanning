@@ -5,6 +5,11 @@
   Created by Valentin Perignon on 23/10/2022.
 */
 
+// Home
+
+"home.title" = "Emploi du temps";
+"home.search" = "Rechercher";
+
 // Settings
 
 "settings.title" = "Paramètres";
@@ -14,13 +19,21 @@
 "settings.row.numberOfDays" = "Jours à afficher";
 "settings.row.campus" = "Activités Campus Sport";
 "settings.row.homework" = "Alerte pour les devoirs";
+
 "settings.login.title" = "Se connecter";
 "settings.login.login" = "Identifiant";
 "settings.login.password" = "Mot de passe";
+"settings.login.error.title" = "Erreur";
+"settings.login.error.message" = "Mauvais identifiant ou mot de passe";
+
+"settings.account.title" = "Mon Compte";
+"settings.account.message" = "Voulez-vous vous déconnecter ?";
+"settings.account.button" = "Se déconnecter";
 
 "settings.groups.title" = "Tous les groupes";
 
 // Action
 
 "action.button.cancel" = "Annuler";
-"action.button.ok" = "Valider";
+"action.button.confirm" = "Valider";
+"action.button.ok" = "Ok";
