@@ -42,7 +42,7 @@ class HomeViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
 
         let settingsButton = UIBarButtonItem(
-            image: UIImage(systemSymbol: SFSymbol.switch2),
+            image: UIImage(systemSymbol: SFSymbol.ellipsis),
             style: .plain,
             target: self,
             action: #selector(presentSettingsViewController)

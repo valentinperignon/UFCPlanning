@@ -106,9 +106,11 @@ public class PlanningManager {
     public func planning() async throws {
         let groups = loadGroups()
         let settings = loadSettings()
-        guard !groups.isEmpty else { return }
 
-        let planning = try await apiFetcher.planning(for: groups, with: settings, user: user)
+        var planning = [Lesson]()
+        if !groups.isEmpty {
+            planning = try await apiFetcher.planning(for: groups, with: settings, user: user)
+        }
 
         let realm = getRealm()
         try? realm.write {
