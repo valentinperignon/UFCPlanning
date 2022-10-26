@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Created with Vectornator (http://vectornator.io/) -->
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 390 844" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:vectornator="http://vectornator.io" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<linearGradient gradientTransform="matrix(-0.000101023 -0.827617 0.38563 -0.000216809 -2.60904 845.622)" gradientUnits="userSpaceOnUse" id="LinearGradient" x1="-0.49564" x2="1025.42" y1="512.88" y2="512.88">
+<stop offset="0" stop-color="#fc571a"/>
+<stop offset="1" stop-color="#fab322"/>
+</linearGradient>
+</defs>
+<clipPath id="ArtboardFrame">
+<rect height="844" width="390" x="0" y="0"/>
+</clipPath>
+<g clip-path="url(#ArtboardFrame)" id="Background" vectornator:layerName="Background">
+<path d="M-2.51547 846.032L-2.61911-3.03549L392.758-3.25778L392.862 845.81L-2.51547 846.032Z" fill="url(#LinearGradient)" fill-rule="nonzero" opacity="1" stroke="none"/>
+</g>
+</svg>
